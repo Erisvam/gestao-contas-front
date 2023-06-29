@@ -1,0 +1,14 @@
+.width12rem {
+  width: 12rem;
+}
+
+.break-word__width18__text-align-center__margin1rem {
+  overflow-wrap: break-word;
+  width: 18rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.remover-border-top {
+    border-top: none;
+}

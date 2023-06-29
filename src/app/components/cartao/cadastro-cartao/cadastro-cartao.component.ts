@@ -8,7 +8,11 @@ import { Cartao } from 'src/app/model/cartao';
 })
 export class CadastroCartaoComponent {
 
-  cartao: Cartao = new Cartao();
+  cartao: Cartao = {
+    codigo: "",
+    nome: "",
+    data_fechamento: ""
+  }
 
   salvarCartao(): void{
     console.log(this.cartao)

@@ -8,7 +8,7 @@ import { Cartao } from '../model/cartao';
 })
 export class CartaoService {
 
-  private webtarget: string = "http://localhost:8080/cartoes";
+  private readonly webtarget: string = "http://localhost:8080/cartoes";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,6 +17,12 @@ export class CartaoService {
   }
 
   consultarCartao(codigo: string): Observable<Cartao> {
-    return this.httpClient.get<Cartao>(`${this.webtarget}/${codigo}`);
+    let uri = `${this.webtarget}/${codigo}`;
+    return this.httpClient.get<Cartao>(uri);
+  }
+
+  deletarCartao(codigo: string): Observable<Cartao>{
+    let uri = `${this.webtarget}/${codigo}`;
+    return this.httpClient.delete<Cartao>(uri);
   }
 }

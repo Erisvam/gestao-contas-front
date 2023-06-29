@@ -1,6 +1,67 @@
-<p>
-    {{ cartao | json }}
-</p>
+<div class="card">
+  <div class="card-header">
+    <h1>{{ cartao?.nome }}</h1>
+  </div>
+  <div class="card-body">
+    <div class="d-flex gap-2">
+      <label class="h6">Código do cartão: </label>
+      <p class="h6">{{ cartao?.codigo }}</p>
+    </div>
+    <div class="d-flex gap-2">
+      <label class="h6">Nome do cartão: </label>
+      <p class="h6">{{ cartao?.nome }}</p>
+    </div>
+    <div class="d-flex gap-2">
+      <label class="h6">Data de fechamento: </label>
+      <p class="h6">{{ cartao?.data_fechamento }}</p>
+    </div>
+    <div class="d-flex gap-2">
+      <label class="h6">Valor utilizado no cartão: </label>
+      <p class="h6">R$500,00</p>
+    </div>
+    <div class="gap-2">
+      <label class="h6">Usuários: </label>
+      <ul>
+        <li>
+          <div class="d-flex justify-content-between width12rem">
+            <span>Luiza</span>
+            <span>R$250,00</span>
+          </div>
+        </li>
+        <li>
+          <div class="d-flex justify-content-between width12rem">
+            <span>Ramon</span>
+            <span>R$250,00</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="card-footer d-flex justify-content-between">
+    <button type="button" class="btn btn-secondary" routerLink="/">voltar</button>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDeletarCartao">
+      deletar
+    </button>
+  </div>
+</div>
 
-<button type="button" class="btn btn-light" routerLink="/" > Voltar </button>
-<button type="button" class="btn btn-danger" routerLink="/" > Deletar </button>
+<div class="modal fade" id="modalDeletarCartao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form>
+          <div class="mb-3 d-flex flex-column align-items-center">
+            <h4 class="break-word__width18__text-align-center__margin1rem">Deseja realmente deletar esse cartão ?</h4>
+            <label class="h6  break-word__width18__text-align-center__margin1rem">Todas as dividas atraladas à esse cartão serão deletas!</label>
+            <input type="text" class="form-control" id="codigo_cartao" placeholder="Informe o código do cartão"
+              [(ngModel)]="codigoCartao"  (input)="validarCodigoCartao()" name="codigo" maxlength="4">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-between  remover-border-top">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">voltar</button>
+        <button type="button" class="btn btn-danger" id="btnDeletarCard" disabled (click)="deletarCartao()">deletar</button>
+      </div>
+    </div>
+  </div>
+</div>
