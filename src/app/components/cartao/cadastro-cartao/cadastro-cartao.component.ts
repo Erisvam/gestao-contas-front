@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Cartao } from 'src/app/model/cartao';
+import { CartaoService } from 'src/app/service/cartao.service';
 
 @Component({
   selector: 'app-cadastro-cartao',
@@ -14,7 +15,13 @@ export class CadastroCartaoComponent {
     data_fechamento: ""
   }
 
+  constructor(private cartaoService: CartaoService){}
+
   salvarCartao(): void{
-    console.log(this.cartao)
+    this.cartaoService.cadastrarCartao(this.cartao).subscribe(()=> {
+      let btnCadastrarCartao = document.getElementById("btnCadastrarCartao");
+      btnCadastrarCartao?.setAttribute("data-bs-dismiss", "modal");
+      btnCadastrarCartao?.click();
+    });
   }
 }

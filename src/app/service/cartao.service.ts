@@ -25,4 +25,8 @@ export class CartaoService {
     let uri = `${this.webtarget}/${codigo}`;
     return this.httpClient.delete<Cartao>(uri);
   }
+
+  cadastrarCartao(cartao: Cartao): Observable<Cartao> {
+    return this.httpClient.post<Cartao>(this.webtarget, cartao);
+  }
 }

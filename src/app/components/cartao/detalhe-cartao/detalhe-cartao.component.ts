@@ -13,24 +13,31 @@ export class DetalheCartaoComponent {
   codigoCartao: string = "";
   
   cartao?: Cartao;
+  btnDeletarCard: any;
 
   constructor(private activatedRoute : ActivatedRoute, private cartaoService: CartaoService, private router: Router) { }
   
   ngOnInit() {
     this.activatedRoute.params.subscribe(path => {
       this.cartaoService.consultarCartao(path['codigo']).subscribe(response => this.cartao = response);
+      this.btnDeletarCard = document.getElementById("btnDeletarCard");
     });
   }
 
   deletarCartao(): void {
     if(this.validarCodigoCartao()){
-      this.cartaoService.deletarCartao(this.codigoCartao).subscribe(response => this.router.navigate(['/']));
+      this.cartaoService.deletarCartao(this.codigoCartao).subscribe(() => {
+        this.btnDeletarCard?.setAttribute("data-bs-dismiss", "modal");
+        this.btnDeletarCard?.click();
+        this.router.navigate(['/'])
+      });
     }
   }
 
   validarCodigoCartao(): Boolean {
     if(this.codigoCartao.match(/^\d{4}$/)){
-      document.querySelector("#btnDeletarCard")?.removeAttribute("disabled");
+      console.log(this.btnDeletarCard);
+      this.btnDeletarCard?.removeAttribute("disabled");
       return true;
     }
     return false;
