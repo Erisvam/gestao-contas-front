@@ -8,13 +8,15 @@ import { CadastroCartaoComponent } from './components/cartao/cadastro-cartao/cad
 import { DetalheCartaoComponent } from './components/cartao/detalhe-cartao/detalhe-cartao.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NgModalGenericoComponent } from './components/generico/ng-modal-generico/ng-modal-generico.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CadastroCartaoComponent,
-    DetalheCartaoComponent
+    DetalheCartaoComponent,
+    NgModalGenericoComponent
   ],
   imports: [
     BrowserModule,

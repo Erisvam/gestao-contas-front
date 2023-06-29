@@ -8,7 +8,13 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <app-cadastro-cartao  class="d-flex justify-content-end" ></app-cadastro-cartao>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCartao" data-bs-whatever="@getbootstrap">
+          cadastrar cartão
+        </button>
+        <app-ng-modal-generico [dataBsTarget]="'modalCartao'">
+          <app-cadastro-cartao class="corpo"></app-cadastro-cartao>
+        </app-ng-modal-generico>
+
         <table class="table">
           <thead>
             <tr>
@@ -18,10 +24,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cartao of cartoes" routerLink="/detalhe-cartao/{{cartao.codigo}}">
+            <tr *ngFor="let cartao of cartoes" id="{{ 'trId'+cartao.codigo }}" data-bs-toggle="modal" data-bs-whatever="@getbootstrap" >
               <td>{{ cartao.codigo }}</td>
               <td>{{ cartao.nome }}</td>
               <td>{{ cartao.data_fechamento }}</td>
+              <app-ng-modal-generico [dataBsTarget]="'modalCartaoDetalhe'+cartao.codigo">
+                <app-detalhe-cartao class="corpo" [cartao]="cartao"></app-detalhe-cartao>
+              </app-ng-modal-generico>
             </tr>
           </tbody>
         </table>
