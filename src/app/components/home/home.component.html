@@ -24,11 +24,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cartao of cartoes" id="{{ 'trId'+cartao.codigo }}" data-bs-toggle="modal" data-bs-whatever="@getbootstrap" >
-              <td>{{ cartao.codigo }}</td>
-              <td>{{ cartao.nome }}</td>
-              <td>{{ cartao.data_fechamento }}</td>
-              <app-ng-modal-generico [dataBsTarget]="'modalCartaoDetalhe'+cartao.codigo">
+            <tr *ngFor="let cartao of cartoes">
+              <td><a data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.codigo }}</a></td>
+              <td><a data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.nome }}</a></td>
+              <td><a data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.data_fechamento }}</a></td>
+              <app-ng-modal-generico [dataBsTarget]="'modalDetalheCartao-'+cartao.codigo">
                 <app-detalhe-cartao class="corpo" [cartao]="cartao"></app-detalhe-cartao>
               </app-ng-modal-generico>
             </tr>
