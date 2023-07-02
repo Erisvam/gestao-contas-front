@@ -9,6 +9,7 @@ import { DetalheCartaoComponent } from './components/cartao/detalhe-cartao/detal
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgModalGenericoComponent } from './components/generico/ng-modal-generico/ng-modal-generico.component';
+import { DeleteCartaoComponent } from './components/cartao/delete-cartao/delete-cartao.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NgModalGenericoComponent } from './components/generico/ng-modal-generic
     HomeComponent,
     CadastroCartaoComponent,
     DetalheCartaoComponent,
-    NgModalGenericoComponent
+    NgModalGenericoComponent,
+    DeleteCartaoComponent
   ],
   imports: [
     BrowserModule,

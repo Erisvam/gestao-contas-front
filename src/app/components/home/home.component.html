@@ -8,12 +8,10 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCartao" data-bs-whatever="@getbootstrap">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCartao"
+          data-bs-whatever="@getbootstrap">
           cadastrar cartão
         </button>
-        <app-ng-modal-generico [dataBsTarget]="'modalCartao'">
-          <app-cadastro-cartao class="corpo"></app-cadastro-cartao>
-        </app-ng-modal-generico>
 
         <table class="table">
           <thead>
@@ -25,11 +23,15 @@
           </thead>
           <tbody>
             <tr *ngFor="let cartao of cartoes">
-              <td><a data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.codigo }}</a></td>
-              <td><a data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.nome }}</a></td>
-              <td><a data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.data_fechamento }}</a></td>
+              <td><a type="button" data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.codigo }}</a></td>
+              <td><a type="button" data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.nome }}</a></td>
+              <td><a type="button" data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.data_fechamento }}</a></td>
               <app-ng-modal-generico [dataBsTarget]="'modalDetalheCartao-'+cartao.codigo">
                 <app-detalhe-cartao class="corpo" [cartao]="cartao"></app-detalhe-cartao>
+              </app-ng-modal-generico>
+              <!-- modal delete cartao -->
+              <app-ng-modal-generico [dataBsTarget]="'modalDeleteCartao-'+cartao.codigo">
+                <app-delete-cartao class="corpo" [codigoCartao]="cartao.codigo"></app-delete-cartao>
               </app-ng-modal-generico>
             </tr>
           </tbody>
@@ -76,3 +78,10 @@
     </div>
   </div>
 </div>
+
+
+<!-- carregar modals -->
+<!-- modal cadastro cartao -->
+<app-ng-modal-generico [dataBsTarget]="'modalCartao'">
+  <app-cadastro-cartao class="corpo"></app-cadastro-cartao>
+</app-ng-modal-generico>
