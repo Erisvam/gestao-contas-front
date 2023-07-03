@@ -1,0 +1,26 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar cartão</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="codigo_cartao" class="col-form-label">Código do cartão:</label>
+        <input type="text" class="form-control" id="codigo_cartao" [(ngModel)]="cartao.codigo" name="codigo">
+      </div>
+      <div class="mb-3">
+        <label for="nome_cartao" class="col-form-label">Nome do cartão:</label>
+        <input type="text" class="form-control" id="nome_cartao" [(ngModel)]="cartao.nome" name="nome">
+      </div>
+      <div class="mb-3">
+        <label for="data_fechamento" class="col-form-label">Data de fechamento:</label>
+        <input type="text" class="form-control" id="data_fechamento" [(ngModel)]="cartao.data_fechamento"
+          name="data_fechamento">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" id="btnCadastrarCartao" (click)="salvarCartao()">salvar</button>
+  </div>
+</div>

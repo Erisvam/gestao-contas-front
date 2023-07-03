@@ -1,0 +1,87 @@
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+        aria-expanded="true" aria-controls="collapseOne">
+        Cartões
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCartao"
+          data-bs-whatever="@getbootstrap">
+          cadastrar cartão
+        </button>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cartao of cartoes">
+              <td><a type="button" data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.codigo }}</a></td>
+              <td><a type="button" data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.nome }}</a></td>
+              <td><a type="button" data-bs-toggle="modal" href="{{'#modalDetalheCartao-'+cartao.codigo}}">{{ cartao.data_fechamento }}</a></td>
+              <app-ng-modal-generico [dataBsTarget]="'modalDetalheCartao-'+cartao.codigo">
+                <app-detalhe-cartao class="corpo" [cartao]="cartao"></app-detalhe-cartao>
+              </app-ng-modal-generico>
+              <!-- modal delete cartao -->
+              <app-ng-modal-generico [dataBsTarget]="'modalDeleteCartao-'+cartao.codigo">
+                <app-delete-cartao class="corpo" [codigoCartao]="cartao.codigo"></app-delete-cartao>
+              </app-ng-modal-generico>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+        aria-expanded="false" aria-controls="collapseTwo">
+        Usuários
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body ">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>Larry the Bird</td>
+              <td>Thornton</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- carregar modals -->
+<!-- modal cadastro cartao -->
+<app-ng-modal-generico [dataBsTarget]="'modalCartao'">
+  <app-cadastro-cartao class="corpo"></app-cadastro-cartao>
+</app-ng-modal-generico>
