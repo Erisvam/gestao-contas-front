@@ -12,4 +12,12 @@ export class DetalheCartaoComponent {
 
   @Input()
   cartao?: Cartao;
+
+  isUsuarios: boolean = false;
+
+  ngOnInit(): void {
+    if(this.cartao?.usuarios?.length != undefined && this.cartao?.usuarios?.length > 0){
+      this.isUsuarios = true;
+    }
+  }
 }

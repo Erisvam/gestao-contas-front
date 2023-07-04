@@ -10,7 +10,7 @@
         <div>
           <a type="button" class="bi bi-plus-circle mb-1 " style="font-size: 1.8rem;" data-bs-toggle="modal" href="#modalCartaoCadastro"></a>
           <app-ng-modal-generico [dataBsTarget]="'modalCartaoCadastro'">
-            <app-cadastro-cartao class="corpo"></app-cadastro-cartao>
+            <app-cadastro-cartao class="corpo width100"></app-cadastro-cartao>
           </app-ng-modal-generico>
         </div>
       </div>
@@ -24,11 +24,11 @@
             </a>
             
             <app-ng-modal-generico [dataBsTarget]="'modalCartaoDetalhe-'+cartao.codigo">
-              <app-detalhe-cartao class="corpo" [cartao]="cartao"></app-detalhe-cartao>
+              <app-detalhe-cartao class="corpo width100" [cartao]="cartao"></app-detalhe-cartao>
             </app-ng-modal-generico>
 
             <app-ng-modal-generico [dataBsTarget]="'modalDeleteCartao-'+cartao.codigo">
-              <app-delete-cartao class="corpo" [codigoCartao]="cartao.codigo"></app-delete-cartao>
+              <app-delete-cartao class="corpo width100" [codigoCartao]="cartao.codigo"></app-delete-cartao>
             </app-ng-modal-generico>
 
           </div>

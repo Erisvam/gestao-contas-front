@@ -2,16 +2,40 @@
     {
         "codigo": "1243",
         "nome": "Santander",
-        "data_fechamento": "05/02"
+        "data_fechamento": "05/02",
+        "valor_total": 520.00,
+        "usuarios": [
+            {
+                "nome": "Luiza",
+                "valor": 120.00
+            },
+            {
+                "nome": "Ramon",
+                "valor": 400.00
+            }
+        ]
     },
     {
         "codigo": "1534",
         "nome": "Bradesco",
-        "data_fechamento": "23/06"
+        "data_fechamento": "23/06",
+        "valor_total": 0,
+        "usuarios": []
     },
     {
         "codigo": "6542",
         "nome": "Itáu",
-        "data_fechamento": "05/02"
+        "data_fechamento": "05/02",
+        "valor_total": 520.00,
+        "usuarios": [
+            {
+                "nome": "Luiza",
+                "valor": 120.00
+            },
+            {
+                "nome": "Ramon",
+                "valor": 400.00
+            }
+        ]
     }
 ]
