@@ -1,0 +1,17 @@
+[
+    {
+        "codigo": "1243",
+        "nome": "Santander",
+        "data_fechamento": "05/02"
+    },
+    {
+        "codigo": "1534",
+        "nome": "Bradesco",
+        "data_fechamento": "23/06"
+    },
+    {
+        "codigo": "6542",
+        "nome": "Itáu",
+        "data_fechamento": "05/02"
+    }
+]
