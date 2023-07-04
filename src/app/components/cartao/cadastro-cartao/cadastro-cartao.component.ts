@@ -12,7 +12,9 @@ export class CadastroCartaoComponent {
   cartao: Cartao = {
     codigo: "",
     nome: "",
-    data_fechamento: ""
+    data_fechamento: "",
+    valor_total: 0,
+    usuarios: []
   }
 
   constructor(private cartaoService: CartaoService){}
