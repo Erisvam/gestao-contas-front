@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Santander</h1>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="mb-3  flex-column d-flex align-items-center">
+        <p class="blockquote">Deseja realmente deletar esse cartão?</p>
+        <p>Todas as dividas atreladas ao cartão serão deletadas!</p>
+        <input type="text" class="form-control" id="codigo_cartao_delete" name="codigo" [(ngModel)]="codigoInputado" placeholder="Insira o código do cartão" maxlength="4">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col">
+        <button class="btn btn-secondary" [routerLink]="['/detalhe-cartao', '1']">voltar</button>
+      </div>
+      <div class="col d-flex justify-content-end">
+        <button class="btn btn-danger" (click)="deletarCartao()">deletar</button>
+      </div>
+    </div>
+  </div>
+</div>

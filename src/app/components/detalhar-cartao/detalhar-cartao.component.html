@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Santander</h1>
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="d-flex gap-2 mb-2">
+        <label class="fw-semibold">Código do cartão: </label>
+        <p class="mb-0 fw-semibold">1234</p>
+      </div>
+      <div class="d-flex gap-2 mb-2">
+        <label class="fw-semibold">Nome do cartão: </label>
+        <p class="mb-0 fw-semibold">Santander</p>
+      </div>
+      <div class="d-flex gap-2 mb-2">
+        <label class="fw-semibold">Data de fechamento: </label>
+        <p class="mb-0 fw-semibold">10/02</p>
+      </div>
+      <div class="d-flex gap-2 mb-2">
+        <label class="fw-semibold">Valor utilizado no cartão: </label>
+        <p class="mb-0 fw-semibold text-danger fw-semibold">R$100,00</p>
+      </div>
+      <div class="gap-2 mb-2">
+        <label class="fw-semibold">Usuários: </label>
+        <div *ngIf="isUsuarios; then hasUsuario; else noHasUsuario;"></div>
+        <ng-template #hasUsuario>
+          <ul class="mb-1">
+            <li>
+              <div class="d-flex justify-content-between width12rem">
+                <div class="row w-100">
+                  <div class="col">
+                    <span class="fw-semibold">Luiza</span>
+                  </div>
+                  <div class="col">
+                    <span class="text-danger fw-semibold">R$ 100,00</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </ng-template>
+        <ng-template #noHasUsuario>
+          <p class="mt-2 fw-semibold d-flex justify-content-center text-danger ">Nenhum usuário usou o cartão.</p>
+        </ng-template>
+      </div>
+      <div class="row mt-5">
+        <div class="col">
+          <button class="btn btn-secondary" routerLink="/">voltar</button>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <button class="btn btn-danger" [routerLink]="['/delete-cartao', '1']">deletar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
