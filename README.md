@@ -25,3 +25,41 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## estrutura de pastas
+  - app
+    
+    - components
+      - home
+        - home-component
+      - cartao
+        - cadastroCartao-component
+        - detalheCartao-component
+        - deleteCartao-component
+      - usuario
+        - cadastroUsuario-component
+        - detalheUsuario-component
+      - divida
+        - detalheDivida-component
+        - pagaDivida-component
+      - generico
+        ...Generico-component
+    
+    - models
+      - cartao
+        ...Cartao-interface
+      - usuario
+        ...Usuario-interface
+      - divida
+        ...Divida-interface
+      - commons
+        ...Commons-interface
+    
+    - services
+      - cartao
+        - cartaoService-service
+      - usuario
+        - usuarioService-service
+      - divida
+        - dividaService-service

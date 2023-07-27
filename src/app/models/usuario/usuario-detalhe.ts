@@ -1,5 +1,5 @@
-import { Divida } from "./divida"
-import { Pagination } from "./pagination"
+import { Divida } from "../divida/divida"
+import { Pagination } from "../pagination"
 
 export interface UsuarioDetalhe {
     nome: string

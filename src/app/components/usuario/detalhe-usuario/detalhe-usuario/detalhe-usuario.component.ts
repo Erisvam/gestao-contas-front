@@ -1,6 +1,6 @@
 import { AfterViewInit,Component, Input, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { UsuarioDetalhe } from 'src/app/model/usuario-detalhe';
+import { UsuarioDetalhe } from 'src/app/models/usuario/usuario-detalhe';
 import { UsuarioService } from 'src/app/service/usuario/usuario.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/service/usuario/usuario.service';
 })
 export class DetalheUsuarioComponent {
 
-  
+
 
   codigoUsuario!: string | null;
   usuario!: UsuarioDetalhe;

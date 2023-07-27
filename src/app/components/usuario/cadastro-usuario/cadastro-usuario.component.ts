@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioCadastro } from 'src/app/model/usuario-cadastro';
+import { UsuarioCadastro } from 'src/app/models/usuario/usuario-cadastro';
 import { UsuarioService } from 'src/app/service/usuario/usuario.service';
 
 
@@ -14,7 +14,7 @@ export class CadastroUsuarioComponent{
     nome: "",
     telefone: ""
   }
-  
+
   campoNome: boolean = false ;
   campoTelefone: boolean = false ;
   mensagemErro: boolean = false ;
