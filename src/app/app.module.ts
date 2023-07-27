@@ -13,6 +13,9 @@ import { DeleteCartaoComponent } from './components/cartao/delete-cartao/delete-
 
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { CadastroUsuarioComponent } from './components/usuario/cadastro-usuario/cadastro-usuario.component';
+import { AlertaComponent } from './components/generico/alerta/alerta.component';
+import { DetalheUsuarioComponent } from './components/usuario/detalhe-usuario/detalhe-usuario/detalhe-usuario.component';
 
 registerLocaleData(ptBr);
 
@@ -23,13 +26,16 @@ registerLocaleData(ptBr);
     CadastroCartaoComponent,
     DetalheCartaoComponent,
     NgModalGenericoComponent,
-    DeleteCartaoComponent
+    DeleteCartaoComponent,
+    CadastroUsuarioComponent,
+    AlertaComponent,
+    DetalheUsuarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

@@ -1,0 +1,26 @@
+<div class="page-content">
+    <h1 class="page-title fs-5 margem-baixo20">Cadastrar Usuário</h1>
+    <form>
+      <div class="mb-3">
+        <label for="nome_usuario" class="col-form-label">Nome do Usuário:</label>
+        <input type="text" class="form-control" id="nome_usuario" [(ngModel)]="usuario.nome" name="nome">
+        <div *ngIf="campoNome" class="alert alert-danger">
+          <strong>Nome</strong> é um campo obrigatório!
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="telefone" class="col-form-label">Telefone:</label>
+        <input mask="(99) 00000-0000" type="tel" class="form-control" id="telefone" [(ngModel)]="usuario.telefone" name="telefone">
+        <div *ngIf="campoTelefone" class="alert alert-danger">
+          <strong>Telefone</strong> é um campo obrigatório!
+        </div>
+      </div>
+      <app-alerta *ngIf="mensagemErro" [tipo]="'erro'" [titulo]="'Cadastro não efetuado'" [mensagem]="'favor tentar novamente mais tarde'"></app-alerta>
+      <app-alerta *ngIf="mensagemSucesso" [tipo]="'sucesso'" [titulo]="'Cadastro efetuado com sucesso!'"></app-alerta>
+      <div class="button-section">
+        <button type="submit" class="btn btn-secondary" routerLink="" >cancelar</button>
+        <button type="submit" class="btn btn-primary" id="btnCadastrarUsuario" (click)="salvarUsuario()">salvar</button>
+      </div>
+    </form>
+</div>
+  
