@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ConsultaCartao } from 'src/app/models/consulta-cartao.interface';
+import { ListarCartaoService } from 'src/app/services/listar-cartao.service';
 
 @Component({
   selector: 'detalhar-cartao',
@@ -8,5 +11,18 @@ import { Component } from '@angular/core';
 export class DetalharCartaoComponent {
 
   isUsuarios: boolean = false;
+
+  cartao?: ConsultaCartao;
+
+  constructor(
+    private activeRouter: ActivatedRoute,
+    private consultarCartaoService: ListarCartaoService
+    ){
+    let codigoCartao = this.activeRouter.snapshot.paramMap.get('codigo_cartao');
+    this.consultarCartaoService.consultarCartao(codigoCartao!).subscribe(response => {
+      this.cartao = response;
+      this.isUsuarios = this.cartao?.usuarios.length != 0 ? true : false;
+    });
+  }
 
 }

@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-header">
-    <h1>Santander</h1>
+    <h1>{{ nomeCartao }}</h1>
   </div>
   <div class="card-body">
     <div class="row">
@@ -12,7 +12,7 @@
     </div>
     <div class="row mt-3">
       <div class="col">
-        <button class="btn btn-secondary" [routerLink]="['/detalhe-cartao', '1']">voltar</button>
+        <button class="btn btn-secondary" [routerLink]="['/detalhe-cartao', codigoCartao]">voltar</button>
       </div>
       <div class="col d-flex justify-content-end">
         <button class="btn btn-danger" (click)="deletarCartao()">deletar</button>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ListarCartaoService } from 'src/app/services/listar-cartao.service';
 
 @Component({
   selector: 'cadastrar-cartao',
@@ -9,6 +11,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class CadastrarCartaoComponent {
 
   formularioCadastroCartao!: FormGroup;
+
+
+  constructor(
+    private cartaoService: ListarCartaoService,
+    private router: Router
+    ){}
 
   ngOnInit(){
     this.criarFormulario();
@@ -24,7 +32,19 @@ export class CadastrarCartaoComponent {
 
   cadastrarCartao(): void {
     if("VALID" == this.formularioCadastroCartao.status){
-      console.log("ok");
+      let cadastroCartao = {
+        "codigo": this.formularioCadastroCartao.get("codigoCartao")?.value,
+        "nome": this.formularioCadastroCartao.get("nomeCartao")?.value,
+        "data_fechamento": this.formularioCadastroCartao.get("dataFechamento")?.value,
+        "manager": {
+          "id": 1
+        }
+      }
+      this.cartaoService.cadastrarCartao(cadastroCartao).subscribe(response => {
+        console.log(response);
+        this.router.navigate(['/']);
+        console.log("ok");
+      });
     }
   }
 }
