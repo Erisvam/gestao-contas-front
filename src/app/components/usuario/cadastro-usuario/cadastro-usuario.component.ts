@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsuarioCadastro } from 'src/app/models/usuario/usuario-cadastro';
-import { UsuarioService } from 'src/app/service/usuario/usuario.service';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
 
 @Component({
