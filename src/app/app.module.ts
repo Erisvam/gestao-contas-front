@@ -4,10 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { CadastrarCartaoComponent } from './components/cadastrar-cartao/cadastrar-cartao.component';
+import { CadastrarCartaoComponent } from './components/cartao/cadastrar-cartao/cadastrar-cartao.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DetalharCartaoComponent } from './components/detalhar-cartao/detalhar-cartao.component';
-import { DeletarCartaoComponent } from './components/deletar-cartao/deletar-cartao.component';
+import { DetalharCartaoComponent } from './components/cartao/detalhar-cartao/detalhar-cartao.component';
+import { DeletarCartaoComponent } from './components/cartao/deletar-cartao/deletar-cartao.component';
 import { HttpClientModule } from '@angular/common/http';
 
 

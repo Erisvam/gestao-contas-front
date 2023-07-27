@@ -1,7 +1,7 @@
-import { Cartoes } from './../models/cartoes.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Cartoes } from 'src/app/models/cartao/cartoes.interface';
 
 @Injectable({
   providedIn: 'root'

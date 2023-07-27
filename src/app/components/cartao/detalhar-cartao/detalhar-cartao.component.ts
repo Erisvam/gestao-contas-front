@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ConsultaCartao } from 'src/app/models/consulta-cartao.interface';
+import { ConsultaCartao } from 'src/app/models/cartao/consulta-cartao.interface';
 import { ListarCartaoService } from 'src/app/services/listar-cartao.service';
 
 @Component({

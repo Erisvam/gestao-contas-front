@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Cartoes } from 'src/app/models/cartoes.interface';
+import { Cartoes } from 'src/app/models/cartao/cartoes.interface';
 import { ListarCartaoService } from 'src/app/services/listar-cartao.service';
 
 @Component({
