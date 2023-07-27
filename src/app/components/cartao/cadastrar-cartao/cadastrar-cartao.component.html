@@ -1,0 +1,27 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Cadastro cartão</span>
+  </div>
+</nav>
+<form class="container" [formGroup]="formularioCadastroCartao">
+  <div class="mb-3">
+    <label class="form-label">Código cartão</label>
+    <input type="text" class="form-control" formControlName="codigoCartao" id="codigoCartao">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Nome do cartão</label>
+    <input type="text" class="form-control" formControlName="nomeCartao" id="nomeCartao">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Data fechamento</label>
+    <input type="text" class="form-control" formControlName="dataFechamento" id="dataFechamento">
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-secondary" routerLink="/">voltar</button>
+    </div>
+    <div class="col d-flex justify-content-end">
+      <button class="btn btn-primary" (click)="cadastrarCartao()">cadastrar</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,12 @@
+<div *ngIf="tipo=='sucesso'" class="alert alert-success">
+    <strong>{{titulo}}</strong> {{mensagem}}
+</div>
+<div *ngIf="tipo=='aviso'" class="alert alert-warning">
+    <strong>{{titulo}}</strong> {{mensagem}}
+</div>
+<div *ngIf="tipo=='info'" class="alert alert-info">
+    <strong>{{titulo}}</strong> {{mensagem}}
+</div>
+<div *ngIf="tipo=='erro'" class="alert alert-danger">
+    <strong>{{titulo}}</strong> {{mensagem}}
+</div>

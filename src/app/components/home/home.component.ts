@@ -1,19 +1,29 @@
 import { Component } from '@angular/core';
-import { Cartao } from 'src/app/model/cartao';
-import { CartaoService } from 'src/app/service/cartao.service';
-import { CartaoService2 } from 'src/app/service/cartao.service2';
+import { Usuario } from 'src/app/models/usuario/usuario';
+import { UsuarioService } from 'src/app/service/usuario/usuario.service';
+import { Cartoes } from 'src/app/models/cartao/cartoes.interface';
+import { ListarCartaoService } from 'src/app/services/cartao/listar-cartao.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
 
-  cartoes: Cartao[] = [];
+  usuarios: Usuario[] = []
+  cartoes: Cartoes[] = [];
 
-  constructor(private cartaoService: CartaoService2){
-    this.cartaoService.listarCartoes().subscribe(response => this.cartoes = response);
+  constructor(
+    private usuarioService: UsuarioService,
+    private listarCartoesService: ListarCartaoService){
+      this.listarCartoes();
+    this.usuarioService.listarUsuarios().subscribe(response => this.usuarios = response);
   }
 
+  listarCartoes(): void {
+    this.listarCartoesService.listarCartoes().subscribe(response => {
+      this.cartoes = response
+    });
+  }
 }

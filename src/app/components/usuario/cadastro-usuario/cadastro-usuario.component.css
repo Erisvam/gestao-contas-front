@@ -1,0 +1,14 @@
+.page-content{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 30px;
+}
+.button-section{
+    display: flex;
+    justify-content: space-around;
+}
+
+.page-title{
+    margin-bottom: 30px;
+}
