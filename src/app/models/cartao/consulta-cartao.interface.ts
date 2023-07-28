@@ -1,6 +1,6 @@
-import { Cartoes } from "./cartoes.interface";
+import { Cartao } from "./cartao.interface";
 import { Usuario } from "../usuario.interface";
 
-export interface ConsultaCartao extends Cartoes {
+export interface ConsultaCartao extends Cartao {
   usuarios: Usuario[]
 }

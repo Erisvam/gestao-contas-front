@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConsultaCartao } from 'src/app/models/cartao/consulta-cartao.interface';
-import { ListarCartaoService } from 'src/app/services/cartao/listar-cartao.service';
+import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 
 @Component({
   selector: 'detalhar-cartao',
@@ -16,7 +16,7 @@ export class DetalharCartaoComponent {
 
   constructor(
     private activeRouter: ActivatedRoute,
-    private consultarCartaoService: ListarCartaoService
+    private consultarCartaoService: CartaoService
     ){
     let codigoCartao = this.activeRouter.snapshot.paramMap.get('codigo_cartao');
     this.consultarCartaoService.consultarCartao(codigoCartao!).subscribe(response => {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ListarCartaoService } from 'src/app/services/cartao/listar-cartao.service';
+import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 
 @Component({
   selector: 'deletar-cartao',
@@ -16,7 +16,7 @@ export class DeletarCartaoComponent {
 
   constructor(
     private activeRouter: ActivatedRoute,
-    private cartaoService: ListarCartaoService,
+    private cartaoService: CartaoService,
     private router: Router
   ) {
     this.codigoCartao = this.activeRouter.snapshot.paramMap.get("codigo_cartao")!;
