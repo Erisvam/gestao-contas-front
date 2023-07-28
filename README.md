@@ -31,35 +31,43 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   - app
     
     - components
-      - home
+      - home/
         - home-component
-      - cartao
-        - cadastroCartao-component
-        - detalheCartao-component
-        - deleteCartao-component
-      - usuario
-        - cadastroUsuario-component
-        - detalheUsuario-component
-      - divida
-        - detalheDivida-component
-        - pagaDivida-component
-      - generico
+      - cartao/
+        - cadastar/
+          - cadastroCartao-component
+        - detalhar/
+          - detalheCartao-component
+        - deletar/
+          - deleteCartao-component
+      - usuario/
+        - cadastrar/
+          - cadastroUsuario-component
+        - detalhar/
+          - detalheUsuario-component
+        - deletar/
+        
+      - divida/
+        - cadastrar/
+        - detalhar/
+        - deletar/
+      - generico/
         ...Generico-component
     
     - models
-      - cartao
+      - cartao/
         ...Cartao-interface
-      - usuario
+      - usuario/
         ...Usuario-interface
-      - divida
+      - divida/
         ...Divida-interface
-      - commons
+      - commons/
         ...Commons-interface
     
     - services
-      - cartao
+      - cartao/
         - cartaoService-service
-      - usuario
+      - usuario/
         - usuarioService-service
-      - divida
+      - divida/
         - dividaService-service
