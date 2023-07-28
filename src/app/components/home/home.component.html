@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="card mb-3"  *ngFor="let cartao of cartoes" [routerLink]="['/detalhe-cartao', cartao.codigo]">
+          <div class="card mb-3"  *ngFor="let cartao of Cartao" [routerLink]="['/detalhe-cartao', cartao.codigo]">
             <div class="card-body d-flex align-items-center justify-content-between">
               <h5 class="card-title me-2">{{ cartao.nome }}</h5>
               <h5 class="text-danger">{{ cartao.valor_total | currency }}</h5>

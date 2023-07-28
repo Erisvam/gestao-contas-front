@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ListarCartaoService } from 'src/app/services/cartao/listar-cartao.service';
+import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 
 @Component({
   selector: 'cadastrar-cartao',
@@ -14,7 +14,7 @@ export class CadastrarCartaoComponent {
 
 
   constructor(
-    private cartaoService: ListarCartaoService,
+    private cartaoService: CartaoService,
     private router: Router
     ){}
 

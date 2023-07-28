@@ -3,7 +3,7 @@ import { Pagination } from "../pagination"
 
 export interface UsuarioDetalhe {
     nome: string
-    cartoes: [
+    Cartao: [
         {
             id: number,
             nome_cartao: string,

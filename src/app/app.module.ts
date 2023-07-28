@@ -6,15 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { CadastroUsuarioComponent } from './components/usuario/cadastro-usuario/cadastro-usuario.component';
-import { AlertaComponent } from './components/generico/alerta/alerta.component';
-import { DetalheUsuarioComponent } from './components/usuario/detalhe-usuario/detalhe-usuario/detalhe-usuario.component';
-import { CadastrarCartaoComponent } from './components/cartao/cadastrar-cartao/cadastrar-cartao.component';
-import { DetalharCartaoComponent } from './components/cartao/detalhar-cartao/detalhar-cartao.component';
-import { DeletarCartaoComponent } from './components/cartao/deletar-cartao/deletar-cartao.component';
+import { CadastroUsuarioComponent } from './components/usuario/cadastrar/cadastro-usuario.component';
+import { CadastrarCartaoComponent } from './components/cartao/cadastrar/cadastrar-cartao.component';
+import { DetalharCartaoComponent } from './components/cartao/detalhar/detalhar-cartao.component';
+import { DeletarCartaoComponent } from './components/cartao/deletar/deletar-cartao.component';
 
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { AlertaComponent } from './components/generico/alerta/alerta.component';
+import { DetalheUsuarioComponent } from './components/usuario/detalhar/detalhe-usuario.component';
 
 registerLocaleData(ptBr);
 

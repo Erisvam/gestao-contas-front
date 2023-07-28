@@ -6,7 +6,7 @@
     <div class="modal-body">
         <p>cartões utilizados:</p>
 
-        <div *ngFor="let cartao of usuario.cartoes" class="row mt-4 ms-0 ps-0 pe-0 container">
+        <div *ngFor="let cartao of usuario.Cartao" class="row mt-4 ms-0 ps-0 pe-0 container">
             <div class="card text-bg-light mb-3 p-0 pb-2">
               <div class="card-header d-flex justify-content-between align-items-center">
                 <h4>{{cartao.nome_cartao}}</h4>
@@ -29,4 +29,3 @@
         </div>
     </div>
   </div>
-  

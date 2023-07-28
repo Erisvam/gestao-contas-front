@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Cartoes } from 'src/app/models/cartao/cartoes.interface';
+import { Cartao } from 'src/app/models/cartao/cartao.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ListarCartaoService {
+export class CartaoService {
 
   readonly uriBase: string = 'http://localhost:8080';
 
   path = {
-    "listarCartoes": "/cartoes",
+    "listarCartao": "/cartoes",
     "consultarCartao": "/cartoes/:codigo_cartao",
     "deletarCartao": "/cartoes/:codigo_cartao",
     "cadastrarCartao": "/cartoes"
@@ -19,9 +19,9 @@ export class ListarCartaoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  listarCartoes(): Observable<Cartoes[]>{
-    let rotaListarCartoes = this.uriBase.concat(this.path.listarCartoes);
-    return this.httpClient.get<Cartoes[]>(rotaListarCartoes);
+  listarCartao(): Observable<Cartao[]>{
+    let rotaListarCartao = this.uriBase.concat(this.path.listarCartao);
+    return this.httpClient.get<Cartao[]>(rotaListarCartao);
   }
 
   consultarCartao(codigoCartao: string): Observable<any>{
