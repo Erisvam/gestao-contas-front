@@ -11,17 +11,24 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 })
 export class HomeComponent {
 
-  usuarios: Usuario[] = []
+  usuarios: Usuario[] = [];
   Cartao: Cartao[] = [];
 
   constructor(
     private usuarioService: UsuarioService,
     private cartaoService: CartaoService){
       this.listarCartao();
-      this.usuarioService.listarUsuarios().subscribe(response => this.usuarios = response);
-  }
+      this.listarUsuarios();
+    }
 
-  listarCartao(): void {
-    this.cartaoService.listarCartao().subscribe(response => this.Cartao = response);
-  }
+    listarCartao(): void {
+      this.cartaoService.listarCartao().subscribe(response => this.Cartao = response);
+    }
+
+    listarUsuarios(): void {
+      this.usuarioService.listarUsuarios().subscribe(response => {
+        this.usuarios = response;
+        console.log(this.usuarios);
+      });
+    }
 }

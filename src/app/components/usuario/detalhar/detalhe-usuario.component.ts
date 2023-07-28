@@ -10,20 +10,24 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 })
 export class DetalheUsuarioComponent {
 
-  codigoUsuario!: string | null;
+  codigoUsuario!: string ;
   usuario!: UsuarioDetalhe;
 
-  carregaUsuario(): void{
-    this.usuarioService.detalharUsuario(this.codigoUsuario).subscribe(response => this.usuario = response)
-  }
 
-  constructor(private route: ActivatedRoute,private usuarioService: UsuarioService) {}
+  constructor(private route: ActivatedRoute, private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.codigoUsuario = params.get('id')
+      this.codigoUsuario = params.get('id')!
     })
     this.carregaUsuario()
+  }
+
+  carregaUsuario(): void {
+    this.usuarioService.detalharUsuario("1").subscribe(response => {
+      this.usuario = response;
+      console.log(this.usuario);
+    })
   }
 
 }

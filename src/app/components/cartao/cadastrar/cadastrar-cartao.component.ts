@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CadastroCartaoRequest } from 'src/app/models/cartao/cadastro-cartao.interface';
 import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 export class CadastrarCartaoComponent {
 
   formularioCadastroCartao!: FormGroup;
-
+  cadastroCartaoRequest!: CadastroCartaoRequest;
 
   constructor(
     private cartaoService: CartaoService,
@@ -32,15 +33,13 @@ export class CadastrarCartaoComponent {
 
   cadastrarCartao(): void {
     if("VALID" == this.formularioCadastroCartao.status){
-      let cadastroCartao = {
-        "codigo": this.formularioCadastroCartao.get("codigoCartao")?.value,
-        "nome": this.formularioCadastroCartao.get("nomeCartao")?.value,
-        "data_fechamento": this.formularioCadastroCartao.get("dataFechamento")?.value,
-        "manager": {
-          "id": 1
-        }
-      }
-      this.cartaoService.cadastrarCartao(cadastroCartao).subscribe(response => {
+
+      this.cadastroCartaoRequest.codigo = this.formularioCadastroCartao.get("codigoCartao")?.value;
+      this.cadastroCartaoRequest.nome = this.formularioCadastroCartao.get("nomeCartao")?.value;
+      this.cadastroCartaoRequest.data_fechamento = this.formularioCadastroCartao.get("dataFechamento")?.value;
+      this.cadastroCartaoRequest.manager.id = 1
+
+      this.cartaoService.cadastrarCartao(this.cadastroCartaoRequest).subscribe(response => {
         console.log(response);
         this.router.navigate(['/']);
         console.log("ok");
