@@ -15,6 +15,7 @@ import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { AlertaComponent } from './components/generico/alerta/alerta.component';
 import { DetalheUsuarioComponent } from './components/usuario/detalhar/detalhe-usuario.component';
+import { SpinnerComponent } from './components/generico/spinner/spinner.component';
 
 registerLocaleData(ptBr);
 
@@ -27,7 +28,8 @@ registerLocaleData(ptBr);
     DetalheUsuarioComponent,
     CadastrarCartaoComponent,
     DetalharCartaoComponent,
-    DeletarCartaoComponent
+    DeletarCartaoComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
