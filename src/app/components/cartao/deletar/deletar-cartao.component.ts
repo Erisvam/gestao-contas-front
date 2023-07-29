@@ -12,7 +12,7 @@ export class DeletarCartaoComponent {
   nomeCartao?: string;
   codigoInputado!: string;
   codigoCartao?: string;
-  // habilitaBotao: boolean = !false;
+  habilitaBotao!: boolean;
 
   constructor(
     private activeRouter: ActivatedRoute,
@@ -32,5 +32,4 @@ export class DeletarCartaoComponent {
       console.log("cartao deletado: ", this.codigoCartao);
     }
   }
-
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ConsultaCartao } from 'src/app/models/cartao/consulta-cartao.interface';
 import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 
@@ -12,17 +13,14 @@ export class DetalharCartaoComponent {
 
   isUsuarios: boolean = false;
 
-  cartao?: ConsultaCartao;
+  cartao$!: Observable<ConsultaCartao>;
 
   constructor(
     private activeRouter: ActivatedRoute,
-    private consultarCartaoService: CartaoService
+    private cartaoService: CartaoService
     ){
     let codigoCartao = this.activeRouter.snapshot.paramMap.get('codigo_cartao');
-    this.consultarCartaoService.consultarCartao(codigoCartao!).subscribe(response => {
-      this.cartao = response;
-      this.isUsuarios = this.cartao?.usuarios.length != 0 ? true : false;
-    });
+    this.cartao$ = this.cartaoService.consultarCartao(codigoCartao!);
   }
 
 }

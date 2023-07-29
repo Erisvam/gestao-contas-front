@@ -11,20 +11,17 @@
             </div>
           </div>
         </div>
-        <div class="card-body">
-          <!-- <div class="card mb-3"  *ngFor="let cartao of Cartao" [routerLink]="['/detalhe-cartao', cartao.codigo]">
+        <div class="card-body" *ngIf="cartoes$ | async as cursos; else loading">
+          <div class="card mb-3"  *ngFor="let cartao of cursos" [routerLink]="['/detalhe-cartao', cartao.codigo]">
             <div class="card-body d-flex align-items-center justify-content-between">
               <h5 class="card-title me-2">{{ cartao.nome }}</h5>
               <h5 class="text-danger">{{ cartao.valor_total | currency }}</h5>
             </div>
-          </div>  -->
-          <div class="card mb-3" [routerLink]="['/detalhe-cartao', 1]">
-            <div class="card-body d-flex align-items-center justify-content-between">
-              <h5 class="card-title me-2">Santander</h5>
-              <h5 class="text-danger">R$ 10,99</h5>
-            </div>
           </div>
         </div>
+        <ng-template #loading>
+          <spinner class="mt-4 mb-4"></spinner>
+        </ng-template>
       </div>
     </div>
   </div>
@@ -49,5 +46,4 @@
       </div>
     </div>
   </div>
-
 </div>

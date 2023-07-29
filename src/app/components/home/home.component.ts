@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/models/usuario/usuario';
 import { Cartao } from 'src/app/models/cartao/cartao.interface';
 import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'home',
@@ -12,7 +13,7 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 export class HomeComponent {
 
   usuarios: Usuario[] = [];
-  Cartao: Cartao[] = [];
+  cartoes$!: Observable<Cartao[]>;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -22,13 +23,15 @@ export class HomeComponent {
     }
 
     listarCartao(): void {
-      this.cartaoService.listarCartao().subscribe(response => this.Cartao = response);
+      this.cartoes$ = this.cartaoService.listarCartao();
+      console.log(this.cartoes$);
+
     }
 
     listarUsuarios(): void {
       this.usuarioService.listarUsuarios().subscribe(response => {
         this.usuarios = response;
-        console.log(this.usuarios);
+        // console.log(this.usuarios);
       });
     }
 }

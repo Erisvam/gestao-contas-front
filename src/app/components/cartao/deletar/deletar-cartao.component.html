@@ -3,19 +3,24 @@
     <h1>{{ nomeCartao }}</h1>
   </div>
   <div class="card-body">
-    <div class="row">
-      <div class="mb-3  flex-column d-flex align-items-center">
-        <p class="blockquote">Deseja realmente deletar esse cartão?</p>
-        <p>Todas as dividas atreladas ao cartão serão deletadas!</p>
-        <input type="text" class="form-control" id="codigo_cartao_delete" name="codigo" [(ngModel)]="codigoInputado" placeholder="Insira o código do cartão" maxlength="4">
+    <div class="mb-3 text-center">
+      <div class="blockquote">
+        <p>Deseja realmente deletar esse cartão?</p>
+      </div>
+      <div>
+        <p>Todas as dividas atreladas ao cartão serão deletas!</p>
       </div>
     </div>
-    <div class="row mt-3">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="codigoCartaoDelete" placeholder="número cartão" [(ngModel)]="codigoInputado" maxlength="4">
+      <label for="codigoCartaoDelete">número cartão</label>
+    </div>
+    <div class="mt-4 d-flex">
       <div class="col">
         <button class="btn btn-secondary" [routerLink]="['/detalhe-cartao', codigoCartao]">voltar</button>
       </div>
       <div class="col d-flex justify-content-end">
-        <button class="btn btn-danger" (click)="deletarCartao()">deletar</button>
+        <button class="btn btn-danger" (click)="deletarCartao()" [disabled]="codigoInputado != codigoCartao">deletar</button>
       </div>
     </div>
   </div>
