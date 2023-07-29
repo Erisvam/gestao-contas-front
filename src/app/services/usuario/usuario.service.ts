@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Usuario } from 'src/app/models/usuario/usuario';
 import { UsuarioCadastro } from 'src/app/models/usuario/usuario-cadastro';
 
 @Injectable({
@@ -18,9 +19,9 @@ export class UsuarioService {
 
   constructor(private httpClient: HttpClient){}
 
-  listarUsuarios(): Observable<any[]>{
+  listarUsuarios(): Observable<Usuario[]>{
     let rotaListaUsuarios = this.uriBase.concat(this.path.listarUsuarios);
-    return this.httpClient.get<any>(rotaListaUsuarios);
+    return this.httpClient.get<Usuario[]>(rotaListaUsuarios);
   }
 
   cadastrarUsuario(usuarioRequest: UsuarioCadastro): Observable<any> {

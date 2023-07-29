@@ -3,6 +3,6 @@ a {
     text-decoration: none; /* no underline */
 }
 .card {
-  max-height: 240px;
+  max-height: 340px;
   overflow-y: auto;
 }

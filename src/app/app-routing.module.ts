@@ -12,7 +12,7 @@ import { DetalheUsuarioComponent } from './components/usuario/detalhar/detalhe-u
     { path: 'cadastro-cartao', component: CadastrarCartaoComponent },
     { path: 'detalhe-cartao/:codigo_cartao', component: DetalharCartaoComponent },
     { path: 'delete-cartao/:codigo_cartao', component: DeletarCartaoComponent },
-    { path: 'detalheUsuario/:id', component: DetalheUsuarioComponent },
+    { path: 'detalhe-usuario/:id', component: DetalheUsuarioComponent },
     { path: 'cadastrarUsuario', component: CadastroUsuarioComponent }
 ];
 
