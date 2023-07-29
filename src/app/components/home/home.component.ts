@@ -15,7 +15,8 @@ export class HomeComponent {
   usuarios: Usuario[] = [];
 
   cartoes$!: Observable<Cartao[]>;
-  error$ = new Subject<boolean>();
+  errorCartoes$ = new Subject<boolean>();
+  errorUsuarios$ = new Subject<boolean>();
 
   usuarios$!: Observable<Usuario[]>;
 
@@ -30,7 +31,7 @@ export class HomeComponent {
       this.cartoes$ = this.cartaoService.listarCartao()
         .pipe(
           catchError(error => {
-            this.error$.next(true);
+            this.errorCartoes$.next(true);
             return EMPTY;
           })
         );
@@ -40,14 +41,19 @@ export class HomeComponent {
       this.usuarios$ = this.usuarioService.listarUsuarios()
       .pipe(
         catchError(error => {
-          this.error$.next(true);
+          this.errorUsuarios$.next(true);
           return EMPTY;
         })
       );
     }
 
-    onCarregarNovamente(): void {
+    onCarregarCartoes(): void {
       this.listarCartao();
-      this.error$.next(false);
+      this.errorCartoes$.next(false);
+    }
+
+    onCarregarUsuarios(): void {
+      this.listarUsuarios();
+      this.errorUsuarios$.next(false);
     }
 }
