@@ -1,0 +1,122 @@
+<!-- <div class="card">
+  <div class="card-header">
+    <h1>{{ cartao?.nome }}</h1>
+  </div>
+  <div class="card-body">
+    <div class="container">
+      <div class="d-flex gap-2 mb-2">
+        <label class="fw-semibold">Código do cartão: </label>
+        <p class="mb-0 fw-semibold">{{ cartao?.codigo }}</p>
+      </div>
+      <div class="d-flex gap-2 mb-2">
+        <label class="fw-semibold">Nome do cartão: </label>
+        <p class="mb-0 fw-semibold">{{ cartao?.nome }}</p>
+      </div>
+      <div class="d-flex gap-2 mb-2">
+        <label class="fw-semibold">Data de fechamento: </label>
+        <p class="mb-0 fw-semibold">{{ cartao?.data_fechamento }}</p>
+      </div>
+      <div class="d-flex gap-2 mb-2">
+        <label class="fw-semibold">Valor utilizado no cartão: </label>
+        <p class="mb-0 fw-semibold text-danger fw-semibold">{{ cartao?.valor_total | currency }}</p>
+      </div>
+      <div class="gap-2 mb-2">
+        <label class="fw-semibold">Usuários: </label>
+        <div *ngIf="isUsuarios; then hasUsuario; else noHasUsuario;"></div>
+        <ng-template #hasUsuario>
+          <ul class="mb-1">
+            <li *ngFor="let usuario of cartao?.usuarios">
+              <div class="d-flex justify-content-between width12rem">
+                <div class="row w-100">
+                  <div class="col">
+                    <span class="fw-semibold">{{ usuario.nome }}</span>
+                  </div>
+                  <div class="col">
+                    <span class="text-danger fw-semibold">{{ usuario.valor_total | currency }}</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </ng-template>
+        <ng-template #noHasUsuario>
+          <p class="mt-2 fw-semibold d-flex justify-content-center text-danger ">Nenhum usuário usou o cartão.</p>
+        </ng-template>
+      </div>
+      <div class="row mt-5">
+        <div class="col">
+          <button class="btn btn-secondary" routerLink="/">voltar</button>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <button class="btn btn-danger" [routerLink]="['/delete-cartao', cartao?.codigo]" [queryParams]="{nome:cartao?.nome}">deletar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="card">
+  <div class="card-header">
+    <h1>{{ cartao?.nome }}</h1>
+  </div>
+  <div class="card-body">
+    <div class="mb-3">
+      <blockquote class="blockquote">
+        <p>código do cartão: {{ cartao?.codigo }}</p>
+      </blockquote>
+    </div>
+    <div class="mb-3">
+      <blockquote class="blockquote">
+        <p>nome do cartão: {{ cartao?.nome }}</p>
+      </blockquote>
+    </div>
+    <div class="mb-3">
+      <blockquote class="blockquote">
+        <p>data de fechamento: {{ cartao?.data_fechamento }}</p>
+      </blockquote>
+    </div>
+    <div class="mb-3">
+      <blockquote class="blockquote">
+        <span>Valor utilizado no cartão: </span><span class="text-danger fw-semibold">{{ cartao?.valor_total | currency }}</span>
+      </blockquote>
+    </div>
+    <hr>
+    <div class="mb-3">
+      <blockquote class="blockquote">
+        <p>Usuários:</p>
+      </blockquote>
+    </div>
+    <div class="mb-3">
+      <blockquote class="blockquote">
+        <div *ngIf="isUsuarios; then hasUsuario; else noHasUsuario;"></div>
+        <ng-template #hasUsuario>
+          <ul>
+            <li *ngFor="let usuario of cartao?.usuarios" class="mb-2">
+              <div class="d-flex justify-content-between width12rem">
+                <div class="row w-100">
+                  <div class="col">
+                    <span class="fw-semibold">{{ usuario.nome }}</span>
+                  </div>
+                  <div class="col">
+                    <span class="text-danger fw-semibold">{{ usuario.valor_total | currency }}</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </ng-template>
+        <ng-template #noHasUsuario>
+          <p class="mt-2 fw-semibold d-flex justify-content-center text-danger ">Nenhum usuário usou o cartão.</p>
+        </ng-template>
+      </blockquote>
+    </div>
+    <div class="mt-5 d-flex">
+      <div class="col">
+        <button class="btn btn-secondary" routerLink="/">voltar</button>
+      </div>
+      <div class="col d-flex justify-content-end">
+        <button class="btn btn-danger" [routerLink]="['/delete-cartao', cartao?.codigo]" [queryParams]="{nome:cartao?.nome}">deletar</button>
+      </div>
+    </div>
+  </div>
+</div>

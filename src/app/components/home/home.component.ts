@@ -1,23 +1,34 @@
 import { Component } from '@angular/core';
-import { Cartao } from 'src/app/model/cartao';
-import { CartaoService } from 'src/app/service/cartao.service';
+import { Usuario } from 'src/app/models/usuario/usuario';
+import { Cartao } from 'src/app/models/cartao/cartao.interface';
+import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
 
-  cartoes: Cartao[] = [];
+  usuarios: Usuario[] = [];
+  Cartao: Cartao[] = [];
 
-  constructor(cartaoService: CartaoService){
-    cartaoService.listarCartoes().subscribe(response => this.cartoes = response);
-  }
-  
-  ngAfterViewChecked():void {
-    this.cartoes.forEach((cartao) => {
-      document.querySelector(`#trId${cartao.codigo}`)?.setAttribute("data-bs-target", "#modalCartaoDetalhe"+cartao.codigo);
-    })
-  }
+  constructor(
+    private usuarioService: UsuarioService,
+    private cartaoService: CartaoService){
+      this.listarCartao();
+      this.listarUsuarios();
+    }
+
+    listarCartao(): void {
+      this.cartaoService.listarCartao().subscribe(response => this.Cartao = response);
+    }
+
+    listarUsuarios(): void {
+      this.usuarioService.listarUsuarios().subscribe(response => {
+        this.usuarios = response;
+        console.log(this.usuarios);
+      });
+    }
 }
