@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EMPTY, Observable, Subject, catchError, Subscription } from 'rxjs';
 import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 
 @Component({
@@ -13,6 +14,15 @@ export class DeletarCartaoComponent {
   codigoInputado!: string;
   codigoCartao?: string;
   habilitaBotao!: boolean;
+  cartaoDeletadoSucesso: boolean = false;
+
+  exibirCard: boolean = true;
+
+  deleteCartao$ = new Observable<any>();
+  error$ = new Subject<boolean>();
+  tempo: number = 3;
+
+  subscription$!: Subscription;
 
   constructor(
     private activeRouter: ActivatedRoute,
@@ -25,11 +35,39 @@ export class DeletarCartaoComponent {
 
   deletarCartao(): void {
     if(this.codigoInputado === this.codigoCartao){
-      this.cartaoService.deletarCartao(this.codigoCartao).subscribe(response => {
-        console.log(response)
-        this.router.navigate(['/']);
+      this.exibirCard = false;
+      this.deleteCartao$ = this.cartaoService.deletarCartao(this.codigoCartao)
+        .pipe(
+          catchError(error => {
+            this.error$.next(true);
+            return EMPTY;
+          })
+        );
+
+      this.subscription$ = this.deleteCartao$.subscribe({
+        next: response => {
+          this.cartaoDeletadoSucesso = true;
+          if(this.cartaoDeletadoSucesso){
+            let myinterval = setInterval(() => {
+              this.tempo = this.tempo - 1
+              if(this.tempo === 0) {
+                clearInterval(myinterval);
+                this.onCarregarHome();
+              }
+            },600);
+          }
+        }
       });
-      console.log("cartao deletado: ", this.codigoCartao);
+    }
+  }
+
+  onCarregarHome(): void {
+    this.router.navigate(['/']);
+  }
+
+  ngOnDestroy() {
+    if(this.subscription$ != undefined){
+      this.subscription$.unsubscribe();
     }
   }
 }

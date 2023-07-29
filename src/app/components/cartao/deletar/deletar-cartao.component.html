@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="exibirCard; else esconderFormulario">
   <div class="card-header">
     <h1>{{ nomeCartao }}</h1>
   </div>
@@ -25,3 +25,27 @@
     </div>
   </div>
 </div>
+
+<ng-template #esconderFormulario>
+  <div *ngIf="error$ | async; else loadingSucesso">
+    <div class="mb-3">
+      <div class="blockquote d-flex align-items-center flex-column mt-3">
+        <span class="fw-semibold">Desculpe, erro ao deletar cartão</span>
+        <button class="btn btn-outline-primary mt-3" (click)="onCarregarHome()">Voltar para home</button>
+      </div>
+    </div>
+  </div>
+  <ng-template #loadingSucesso>
+    <div *ngIf="cartaoDeletadoSucesso; else loading">
+      <div class="alert alert-success d-flex align-items-center flex-column" role="alert">
+        <h3>Cartão deletado com sucesso!</h3>
+        <span>voltando p/ tela incial: {{ tempo }}</span>
+      </div>
+    </div>
+    <ng-template #loading>
+      <spinner></spinner>
+    </ng-template>
+  </ng-template>
+</ng-template>
+
+
