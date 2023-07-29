@@ -11,7 +11,7 @@
             </div>
           </div>
         </div>
-        <div class="card-body" *ngIf="cartoes$ | async as cursos; else loading">
+        <div class="card-body" *ngIf="cartoes$ | async as cursos; else loadingError">
           <div class="card mb-3"  *ngFor="let cartao of cursos" [routerLink]="['/detalhe-cartao', cartao.codigo]">
             <div class="card-body d-flex align-items-center justify-content-between">
               <h5 class="card-title me-2">{{ cartao.nome }}</h5>
@@ -19,8 +19,18 @@
             </div>
           </div>
         </div>
-        <ng-template #loading>
-          <spinner class="mt-4 mb-4"></spinner>
+        <ng-template #loadingError>
+          <div *ngIf="error$ | async; else loading">
+            <div class="mb-3 mt-3">
+              <div class="blockquote d-flex align-items-center flex-column">
+                <span class="fw-semibold">Erro ao carregar os cartões</span>
+                <button class="btn btn-outline-primary mt-3" (click)="onCarregarNovamente()">Tentar novamente</button>
+              </div>
+            </div>
+          </div>
+          <ng-template #loading>
+            <spinner class="mt-4 mb-4"></spinner>
+          </ng-template>
         </ng-template>
       </div>
     </div>

@@ -1,39 +1,38 @@
 <div style="height: 100vh;">
   <div class="card">
-      <!-- <div *ngIf="false as cartao; else loading"> -->
-      <div *ngIf="cartao$ | async as cartao; else loading">
+      <div *ngIf="cartao$ | async as cartao; else loadingError">
         <div class="card-header">
           <h1>{{ cartao.nome }}</h1>
         </div>
         <div class="card-body">
           <div class="mb-3">
-            <blockquote class="blockquote">
+            <div class="blockquote">
               <span class="fw-semibold">código do cartão: </span><span>{{ cartao.codigo }}</span>
-            </blockquote>
+            </div>
           </div>
           <div class="mb-3">
-            <blockquote class="blockquote">
+            <div class="blockquote">
               <span class="fw-semibold">nome do cartão: </span> <span>{{ cartao.nome }}</span>
-            </blockquote>
+            </div>
           </div>
           <div class="mb-3">
-            <blockquote class="blockquote">
+            <div class="blockquote">
               <span class="fw-semibold">data de fechamento: </span><span>{{ cartao.data_fechamento }}</span>
-            </blockquote>
+            </div>
           </div>
           <div class="mb-3">
-            <blockquote class="blockquote">
+            <div class="blockquote">
               <span class="fw-semibold">Valor utilizado no cartão: </span><span class="text-danger fw-semibold">{{ cartao.valor_total | currency }}</span>
-            </blockquote>
+            </div>
           </div>
           <hr>
           <div class="mb-3">
-            <blockquote class="blockquote">
+            <div class="blockquote">
               <p>Usuários:</p>
-            </blockquote>
+            </div>
           </div>
           <div class="mb-3">
-            <blockquote class="blockquote">
+            <div class="blockquote">
               <div *ngIf="cartao.usuarios.length != 0; then hasUsuario; else noHasUsuario;"></div>
               <ng-template #hasUsuario>
                 <ul>
@@ -54,7 +53,7 @@
               <ng-template #noHasUsuario>
                 <p class="mt-2 fw-semibold d-flex justify-content-center text-danger ">Nenhum usuário usou o cartão.</p>
               </ng-template>
-            </blockquote>
+            </div>
           </div>
           <div class="mt-5 d-flex">
             <div class="col">
@@ -66,8 +65,18 @@
           </div>
         </div>
       </div>
-      <ng-template #loading>
-        <spinner class="margin-top50"></spinner>
+      <ng-template #loadingError>
+        <div *ngIf="error$ | async; else loading">
+          <div class="mb-3">
+            <div class="blockquote d-flex align-items-center flex-column mt-3">
+              <span class="fw-semibold">Erro ao carregar os detalhes do cartão</span>
+              <button class="btn btn-outline-primary mt-3" (click)="onCarregarNovamente()">Tentar novamente</button>
+            </div>
+          </div>
+        </div>
+        <ng-template #loading>
+          <spinner class="margin-top50"></spinner>
+        </ng-template>
       </ng-template>
     </div>
 </div>
