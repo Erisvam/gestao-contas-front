@@ -1,13 +1,13 @@
 <div style="height: 100vh;">
-  <div class="card">
-      <!-- <div *ngIf="true; else loadingError"> -->
+  <div class="card card-detalhe-usuario">
+      <!-- <div *ngIf="false as usuario; else loadingError"> -->
       <div *ngIf="usuario$ | async as usuario; else loadingError">
         <div class="card-header">
           <h1>{{ usuario.nome_usuario }} </h1>
         </div>
         <div class="card-body">
           <div class="mb-3">
-            <div class="blockquote">
+            <div class="blockquote fw-semibold">
               <p>Cartões utilizados:</p>
             </div>
           </div>
@@ -34,10 +34,7 @@
               <span class="fw-semibold">Saldo devedor: <span class="text-danger fw-semibold">{{ usuario.saldo_devedor | currency }}</span></span>
             </div>
           </div>
-
-
-
-          <div class="mt-5 d-flex">
+          <div class="mt-3 d-flex">
             <div class="col">
               <button class="btn btn-secondary" routerLink="/">voltar</button>
             </div>
@@ -52,7 +49,7 @@
           <div class="mb-3">
             <div class="blockquote d-flex align-items-center flex-column mt-3">
               <span class="fw-semibold">Erro ao carregar os detalhes do usuário</span>
-              <button class="btn btn-outline-primary mt-3" (click)="onRecarregarUsuario()">Tentar novamente</button>
+              <button class="btn btn-outline-primary mt-3" (click)="onRecarregarUsuario()">tentar novamente</button>
             </div>
           </div>
         </div>
