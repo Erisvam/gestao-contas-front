@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from 'src/app/models/usuario/usuario';
 import { UsuarioCadastro } from 'src/app/models/usuario/usuario-cadastro';
+import { UsuarioDetalhe } from 'src/app/models/usuario/usuario-detalhe';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ export class UsuarioService {
     return this.httpClient.post<any>(rotaCadastrarUsuario, usuarioRequest);
   }
 
-  detalharUsuario(id: string): Observable<any> {
+  detalharUsuario(id: string): Observable<UsuarioDetalhe> {
     let rotaDetalheUsuario = this.uriBase.concat(this.path.detalharUsuario.replace(":id", id));
-    return this.httpClient.get<any>(rotaDetalheUsuario);
+    return this.httpClient.get<UsuarioDetalhe>(rotaDetalheUsuario);
   }
 }
