@@ -45,18 +45,7 @@ export class DeletarCartaoComponent {
         );
 
       this.subscription$ = this.deleteCartao$.subscribe({
-        next: response => {
-          this.cartaoDeletadoSucesso = true;
-          if(this.cartaoDeletadoSucesso){
-            let myinterval = setInterval(() => {
-              this.tempo = this.tempo - 1
-              if(this.tempo === 0) {
-                clearInterval(myinterval);
-                this.onCarregarHome();
-              }
-            },600);
-          }
-        }
+        next: response =>  this.cartaoDeletadoSucesso = true
       });
     }
   }

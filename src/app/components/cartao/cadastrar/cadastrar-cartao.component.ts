@@ -65,19 +65,7 @@ export class CadastrarCartaoComponent {
         })
       )
       .subscribe({
-        next: response => {
-          this.cartaoCadastradoSucesso = true;
-          if(this.cartaoCadastradoSucesso){
-            let myinterval = setInterval(() => {
-              this.tempo = this.tempo - 1
-              if(this.tempo === 0) {
-                clearInterval(myinterval);
-                this.onCarregarHome();
-              }
-            },600);
-          }
-        },
-
+        next: response => this.cartaoCadastradoSucesso = true
       });
     }
   }
