@@ -17,6 +17,7 @@ import { AlertaComponent } from './components/generico/alerta/alerta.component';
 import { DetalheUsuarioComponent } from './components/usuario/detalhar/detalhe-usuario.component';
 import { SpinnerComponent } from './components/generico/spinner/spinner.component';
 import { ErroGenericoComponent } from './components/generico/erro-generico/erro-generico.component';
+import { MensagemSucessoComponent } from './components/generico/mensagem-sucesso/mensagem-sucesso.component';
 
 registerLocaleData(ptBr);
 
@@ -31,7 +32,8 @@ registerLocaleData(ptBr);
     DetalharCartaoComponent,
     DeletarCartaoComponent,
     SpinnerComponent,
-    ErroGenericoComponent
+    ErroGenericoComponent,
+    MensagemSucessoComponent
   ],
   imports: [
     BrowserModule,

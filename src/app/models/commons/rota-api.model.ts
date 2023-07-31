@@ -8,12 +8,12 @@ export class RotaApi {
   }
 
   getRotaCartoes(codigoCartao?: string): string {
-    if(codigoCartao != undefined) return this.uriApi.concat(this.rotas.cartoes);
+    if(codigoCartao == undefined) return this.uriApi.concat(this.rotas.cartoes);
     return this.uriApi.concat(this.rotas.cartoes.concat(`/${codigoCartao}`));
   }
 
   getRotaUsuarios(idUsuario?: string): string {
-    if(idUsuario != undefined) return this.uriApi.concat(this.rotas.usuarios);
+    if(idUsuario == undefined) return this.uriApi.concat(this.rotas.usuarios);
     return this.uriApi.concat(this.rotas.usuarios.concat(`/${idUsuario}`));
   }
 }

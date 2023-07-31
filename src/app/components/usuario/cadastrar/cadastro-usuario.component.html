@@ -30,10 +30,7 @@
     </div>
     <ng-template #loadingSucesso>
       <div *ngIf="usuarioCadastroSucesso; else loading">
-        <div class="alert alert-success d-flex align-items-center flex-column" role="alert">
-          <h3>Usuário cadastrado com sucesso!</h3>
-          <span>voltando p/ tela incial: {{ tempo }}</span>
-        </div>
+        <mensagem-sucesso [mensagemSucesso]="'Usuário cadastrado com sucesso!'"></mensagem-sucesso>
       </div>
       <ng-template #loading>
         <spinner class="margin-top50"></spinner>

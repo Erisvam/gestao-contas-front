@@ -25,22 +25,15 @@
     </div>
   </div>
 </div>
-
 <ng-template #esconderFormulario>
   <div *ngIf="error$ | async; else loadingSucesso">
     <div class="mb-3">
-      <div class="blockquote d-flex align-items-center flex-column mt-3">
-        <span class="fw-semibold">Desculpe, erro ao deletar cartão</span>
-        <button class="btn btn-outline-primary mt-3" (click)="onCarregarHome()">voltar para home</button>
-      </div>
+      <erro-generico [mensagemErro]="'Desculpe, erro ao deletar cartão'"></erro-generico>
     </div>
   </div>
   <ng-template #loadingSucesso>
     <div *ngIf="cartaoDeletadoSucesso; else loading">
-      <div class="alert alert-success d-flex align-items-center flex-column" role="alert">
-        <h3>Cartão deletado com sucesso!</h3>
-        <span>voltando p/ tela incial: {{ tempo }}</span>
-      </div>
+      <mensagem-sucesso [mensagemSucesso]="'Cartão deletado com sucesso!'"></mensagem-sucesso>
     </div>
     <ng-template #loading>
       <spinner></spinner>
