@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { EMPTY, Subject, Subscription, catchError } from 'rxjs';
 import { UsuarioCadastro } from 'src/app/models/usuario/usuario-cadastro';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
@@ -10,59 +13,72 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 })
 export class CadastroUsuarioComponent{
 
-  usuario: UsuarioCadastro = {
-    nome: "",
-    telefone: ""
-  }
+  usuarioCadastroSucesso: boolean = false;
+  exibirCard: boolean = true;
+  tempo: number = 3;
+  formularioCadastroUsuario!: FormGroup;
 
-  campoNome: boolean = false ;
-  campoTelefone: boolean = false ;
-  mensagemErro: boolean = false ;
-  mensagemSucesso: boolean = false ;
+  error$ = new Subject<boolean>();
+  subscription$!: Subscription;
 
-  constructor(private usuarioService: UsuarioService){
-    this.usuario.nome=""
-    this.usuario.telefone=""
-  }
-  limparCampos():void{
-    this.usuario.nome=""
-    this.usuario.telefone=""
-  }
-
-  salvarUsuario(): void{
-    if(this.validaCampos()){
-      this.usuarioService.cadastrarUsuario(this.usuario).subscribe(()=> {
-        this.retornoAPIVisual(true)
-        let btnCadastrarUsuario = document.getElementById("btnCadastrarUsuario");
-        btnCadastrarUsuario?.setAttribute("data-bs-dismiss", "modal");
-        btnCadastrarUsuario?.click();
-      },
-      (error: any) => this.retornoAPIVisual(false));
-    }
-  }
-  retornoAPIVisual(sucesso:boolean):void{
-    if(sucesso){
-      this.limparCampos()
-      this.mensagemSucesso=true
-      this.mensagemErro=false
-    }else{
-      this.mensagemSucesso=false
-      this.mensagemErro=true
+  cadastroUsuarioRequest: UsuarioCadastro = {
+    nome: '',
+    telefone: '',
+    manager: {
+      id: 1
     }
   }
 
-  validaCampos(): boolean{
-    if(this.usuario.nome==""){
-      this.campoNome=true;
-    }else{
-      this.campoNome=false;
+  constructor(private usuarioService: UsuarioService, private router: Router) {
+    this.criarFormulario();
+  }
+
+  criarFormulario(): void {
+    this.formularioCadastroUsuario = new FormGroup({
+      nomeUsuario: new FormControl(null, Validators.required),
+      telefoneUsuario: new FormControl(null)
+    });
+  }
+
+  cadastrarUsuario(): void {
+    if("VALID" == this.formularioCadastroUsuario.status) {
+      this.exibirCard = false;
+
+      this.cadastroUsuarioRequest.nome = this.formularioCadastroUsuario.get("nomeUsuario")?.value;
+      this.cadastroUsuarioRequest.telefone = this.formularioCadastroUsuario.get("telefoneUsuario")?.value;
+
+      this.subscription$ = this.usuarioService.cadastrarUsuario(this.cadastroUsuarioRequest)
+        .pipe(
+          catchError(error => {
+            this.error$.next(true);
+            return EMPTY;
+          })
+        )
+        .subscribe({
+          next: response => {
+            this.usuarioCadastroSucesso = true;
+            if(this.usuarioCadastroSucesso){
+              let myinterval = setInterval(() => {
+                this.tempo = this.tempo - 1
+                if(this.tempo === 0) {
+                  clearInterval(myinterval);
+                  this.onCarregarHome();
+                }
+              },600);
+            }
+          }
+        })
     }
-    if(this.usuario.telefone==""){
-      this.campoTelefone=true;
-    }else{
-      this.campoTelefone=false;
+  }
+
+  onCarregarHome(): void {
+    this.router.navigate(['/']);
+  }
+
+  ngOnDestroy(): void {
+    if(this.subscription$ != undefined){
+      this.subscription$.unsubscribe();
     }
-    return !(this.campoNome || this.campoTelefone);
   }
 
 }

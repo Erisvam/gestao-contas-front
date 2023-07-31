@@ -13,7 +13,7 @@ import { DetalheUsuarioComponent } from './components/usuario/detalhar/detalhe-u
     { path: 'detalhe-cartao/:codigo_cartao', component: DetalharCartaoComponent },
     { path: 'delete-cartao/:codigo_cartao', component: DeletarCartaoComponent },
     { path: 'detalhe-usuario/:id', component: DetalheUsuarioComponent },
-    { path: 'cadastrarUsuario', component: CadastroUsuarioComponent }
+    { path: 'cadastro-usuario', component: CadastroUsuarioComponent }
 ];
 
 @NgModule({
