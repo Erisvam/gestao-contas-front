@@ -16,6 +16,7 @@ import { registerLocaleData } from '@angular/common';
 import { AlertaComponent } from './components/generico/alerta/alerta.component';
 import { DetalheUsuarioComponent } from './components/usuario/detalhar/detalhe-usuario.component';
 import { SpinnerComponent } from './components/generico/spinner/spinner.component';
+import { ErroGenericoComponent } from './components/generico/erro-generico/erro-generico.component';
 
 registerLocaleData(ptBr);
 
@@ -29,7 +30,8 @@ registerLocaleData(ptBr);
     CadastrarCartaoComponent,
     DetalharCartaoComponent,
     DeletarCartaoComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ErroGenericoComponent
   ],
   imports: [
     BrowserModule,

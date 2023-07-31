@@ -30,12 +30,7 @@
 
 <ng-template #esconderFormulario>
   <div *ngIf="error$ | async; else loadingSucesso">
-    <div class="mb-3">
-      <div class="blockquote d-flex align-items-center flex-column mt-3">
-        <span class="fw-semibold">Desculpe, erro ao cadastrar cartão</span>
-        <button class="btn btn-outline-primary mt-3" (click)="onCarregarHome()">voltar para home</button>
-      </div>
-    </div>
+    <erro-generico [mensagemErro]="'Desculpe, erro ao cadastrar cartão'"></erro-generico>
   </div>
   <ng-template #loadingSucesso>
     <div *ngIf="cartaoCadastradoSucesso; else loading">
