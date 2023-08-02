@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, mapToCanMatch } from '@angular/router';
-import { EMPTY, Observable, Subject, catchError, map, tap } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import {EMPTY, Observable, Subject, catchError, tap} from 'rxjs';
 import { UsuarioDetalhe } from 'src/app/models/usuario/usuario-detalhe';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
@@ -26,7 +26,7 @@ export class DetalheUsuarioComponent {
   consultarUsuario(): void {
     this.usuario$ = this.usuarioService.detalharUsuario(this.idUsuario)
     .pipe(
-      // tap(resp => console.log(resp)),
+      tap(resp => console.log(resp)),
       catchError(error => {
         this.error$?.next(true);
         return EMPTY;

@@ -5,6 +5,7 @@ import { CadastroCartaoRequest } from 'src/app/models/cartao/cadastro-cartao.int
 import { Cartao } from 'src/app/models/cartao/cartao.interface';
 import { ConsultaCartao } from 'src/app/models/cartao/consulta-cartao.interface';
 import { RotaApi } from 'src/app/models/commons/rota-api.model';
+import {CartaoResponse} from "../../models/cartao/cartao-response-interface";
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class CartaoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  listarCartao(): Observable<Cartao[]> {
-    return this.httpClient.get<Cartao[]>(this.rotaApi.getRotaCartoes());
+  listarCartao(): Observable<CartaoResponse> {
+    return this.httpClient.get<CartaoResponse>(this.rotaApi.getRotaCartoes());
   }
 
   consultarCartao(codigoCartao: string): Observable<ConsultaCartao>{

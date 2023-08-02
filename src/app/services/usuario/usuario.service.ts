@@ -5,6 +5,7 @@ import { RotaApi } from 'src/app/models/commons/rota-api.model';
 import { Usuario } from 'src/app/models/usuario/usuario';
 import { UsuarioCadastro } from 'src/app/models/usuario/usuario-cadastro';
 import { UsuarioDetalhe } from 'src/app/models/usuario/usuario-detalhe';
+import {usuarioResponse} from "../../models/usuario/usuario-response.interface";
 
 
 @Injectable({
@@ -16,8 +17,8 @@ export class UsuarioService {
 
   constructor(private httpClient: HttpClient){}
 
-  listarUsuarios(): Observable<Usuario[]>{
-    return this.httpClient.get<Usuario[]>(this.rotaApi.getRotaUsuarios());
+  listarUsuarios(): Observable<usuarioResponse>{
+    return this.httpClient.get<usuarioResponse>(this.rotaApi.getRotaUsuarios());
   }
 
   cadastrarUsuario(usuarioRequest: UsuarioCadastro): Observable<any> {
