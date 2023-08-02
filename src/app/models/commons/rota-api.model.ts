@@ -1,5 +1,8 @@
+import {environments} from "../../../environments/environments";
+
 export class RotaApi {
-  readonly uriApi: string = 'http://localhost:8080'
+  readonly uriApi: string = environments.baseApi;
+
   rotas = {
     cartoes: "/cartoes",
     usuarios: "/usuarios",

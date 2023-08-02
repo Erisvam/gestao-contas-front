@@ -14,18 +14,26 @@
 
           <div class="card mt-3" *ngFor="let dividaCartao of usuario.dividas_usuario ">
             <div class="card-header">
-              <div class="mb-1">
-                <div class="blockquote d-flex justify-content-between">
+              <div class="mb-0">
+                <div class="blockquote d-flex justify-content-between mb-0">
                   <span class="fw-semibold">{{ dividaCartao.nome_cartao }}</span>
-                  <span class="text-danger fw-semibold">{{ dividaCartao.valor_total_cartao | currency }}</span>
+                  <span class="text-danger fw-semibold">{{ dividaCartao.valor_total | currency }}</span>
                 </div>
               </div>
             </div>
-            <div class="card-body">
-              <div class="blockquote d-flex justify-content-between" *ngFor="let divida of dividaCartao.dividas">
-                <span class="fw-semibold">{{ divida.data_compra | date:'dd/MM/yyyy' }}</span>
-                <span class="fw-semibold">{{ divida.descricao_compra }}</span>
-                <span class="fw-semibold">{{ divida.valor_compra | currency }}</span>
+            <div class="card-body p-0 pt-3">
+              <div class="container text-center mb-3" *ngFor="let divida of dividaCartao.dividas_usuario">
+                <div class="row">
+                  <div class="col">
+                    <span class="fw-semibold">{{ divida.data_compra | date:'dd/MM/yyyy' }}</span>
+                  </div>
+                  <div class="col">
+                    <span class="fw-semibold">{{ divida.descricao_compra }}</span>
+                  </div>
+                  <div class="col">
+                    <span class="fw-semibold">{{ divida.valor_compra | currency }}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
