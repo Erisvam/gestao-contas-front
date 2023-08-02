@@ -1,7 +1,9 @@
 import {environments} from "../../../environments/environments";
 
+const {baseApi} = environments;
+
 export class RotaApi {
-  readonly uriApi: string = environments.baseApi;
+  readonly uriApi: string = baseApi;
 
   rotas = {
     cartoes: "/cartoes",
