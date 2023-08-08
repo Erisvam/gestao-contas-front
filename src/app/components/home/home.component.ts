@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { Usuario } from 'src/app/models/usuario/usuario';
-import { Cartao } from 'src/app/models/cartao/cartao.interface';
 import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { EMPTY, Observable, Subject, catchError } from 'rxjs';
 import {usuarioResponse} from "../../models/usuario/usuario-response.interface";
 import {CartaoResponse} from "../../models/cartao/cartao-response-interface";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'home',
@@ -58,4 +57,6 @@ export class HomeComponent {
       this.listarUsuarios();
       this.errorUsuarios$.next(false);
     }
+
+    ngOnDestroy(){}
 }

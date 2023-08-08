@@ -57,7 +57,7 @@
         </div>
         <div class="mt-5 d-flex">
           <div class="col">
-            <button class="btn btn-secondary" routerLink="/">voltar</button>
+            <button class="btn btn-secondary" routerLink="/home">voltar</button>
           </div>
           <div class="col d-flex justify-content-end">
             <button class="btn btn-danger" [routerLink]="['/delete-cartao', cartao?.codigo]" [queryParams]="{nome:cartao?.nome}">deletar</button>
