@@ -13,7 +13,7 @@ export class ErroGenericoComponent {
   constructor(private router:Router){}
 
   onCarregarHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   ngOnDestroy(){}

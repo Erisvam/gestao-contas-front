@@ -71,7 +71,7 @@ export class CadastrarCartaoComponent {
   }
 
   onCarregarHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   ngOnDestroy(): void {

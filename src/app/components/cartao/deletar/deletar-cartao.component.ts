@@ -51,7 +51,7 @@ export class DeletarCartaoComponent {
   }
 
   onCarregarHome(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
   ngOnDestroy() {

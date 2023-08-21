@@ -39,4 +39,6 @@ export class DetalharCartaoComponent {
     this.error$.next(true);
   }
 
+  ngOnDestroy(){}
+
 }

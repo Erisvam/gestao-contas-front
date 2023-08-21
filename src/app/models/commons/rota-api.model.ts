@@ -1,3 +1,4 @@
+import { HttpHeaders } from "@angular/common/http";
 import {environments} from "../../../environments/environments";
 
 const {baseApi} = environments;
@@ -9,7 +10,8 @@ export class RotaApi {
     cartoes: "/cartoes",
     usuarios: "/usuarios",
     dividas: "/dividas",
-    managers: "/managers"
+    managers: "/managers",
+    login: "/auth/login"
   }
 
   getRotaCartoes(codigoCartao?: string): string {
@@ -20,5 +22,17 @@ export class RotaApi {
   getRotaUsuarios(idUsuario?: string): string {
     if(idUsuario == undefined) return this.uriApi.concat(this.rotas.usuarios);
     return this.uriApi.concat(this.rotas.usuarios.concat(`/${idUsuario}`));
+  }
+
+  getRotaLogin(): string {
+    return this.uriApi.concat(this.rotas.login);
+  }
+
+  getToken(): HttpHeaders {
+    const token = localStorage.getItem("authorization");
+    if(token != undefined){
+      return new HttpHeaders().append("Authorization", atob(token));
+    }
+    return new HttpHeaders();
   }
 }
