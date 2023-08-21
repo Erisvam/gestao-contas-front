@@ -4,7 +4,6 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { EMPTY, Observable, Subject, catchError } from 'rxjs';
 import {usuarioResponse} from "../../models/usuario/usuario-response.interface";
 import {CartaoResponse} from "../../models/cartao/cartao-response-interface";
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'home',

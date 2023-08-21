@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { EMPTY, Subject, catchError } from 'rxjs';
 import { ILogin } from 'src/app/models/login/login.interface';
 import { LoginService } from 'src/app/services/login/login.service';
+import { GestaoContasUtilService } from 'src/app/services/utils/gestao-contas-util.model';
 
 @Component({
   selector: 'login',
@@ -43,7 +44,7 @@ export class LoginComponent {
             return EMPTY;
           })
         ).subscribe(response => {
-          localStorage.setItem("authorization", btoa(response.access_token));
+          GestaoContasUtilService.setAuthorization(response.access_token);
           this.router.navigate(['/home']);
         });
     }
