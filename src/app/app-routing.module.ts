@@ -7,6 +7,7 @@ import { DeletarCartaoComponent } from './components/cartao/deletar/deletar-cart
 import { CadastroUsuarioComponent } from './components/usuario/cadastrar/cadastro-usuario.component';
 import { DetalheUsuarioComponent } from './components/usuario/detalhar/detalhe-usuario.component';
 import { LoginComponent } from './components/login/login/login.component';
+import { CadastroDividaComponent } from './components/divida/cadastrar/cadastro-divida/cadastro-divida.component';
 
   const routes: Routes = [
     { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -15,7 +16,8 @@ import { LoginComponent } from './components/login/login/login.component';
     { path: 'detalhe-cartao/:codigo_cartao', component: DetalharCartaoComponent },
     { path: 'delete-cartao/:codigo_cartao', component: DeletarCartaoComponent },
     { path: 'detalhe-usuario/:id', component: DetalheUsuarioComponent },
-    { path: 'cadastro-usuario', component: CadastroUsuarioComponent }
+    { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
+    { path: 'cadastro-divida', component: CadastroDividaComponent }
 ];
 
 @NgModule({
