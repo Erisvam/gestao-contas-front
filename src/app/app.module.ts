@@ -19,6 +19,7 @@ import { SpinnerComponent } from './components/generico/spinner/spinner.componen
 import { ErroGenericoComponent } from './components/generico/erro-generico/erro-generico.component';
 import { MensagemSucessoComponent } from './components/generico/mensagem-sucesso/mensagem-sucesso.component';
 import { LoginComponent } from './components/login/login/login.component';
+import { CadastroDividaComponent } from './components/divida/cadastrar/cadastro-divida/cadastro-divida.component';
 
 registerLocaleData(ptBr);
 
@@ -35,7 +36,8 @@ registerLocaleData(ptBr);
     SpinnerComponent,
     ErroGenericoComponent,
     MensagemSucessoComponent,
-    LoginComponent
+    LoginComponent,
+    CadastroDividaComponent
   ],
   imports: [
     BrowserModule,
