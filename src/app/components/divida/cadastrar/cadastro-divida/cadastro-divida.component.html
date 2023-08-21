@@ -1,0 +1,71 @@
+<div style="height: 100vh;">
+    <div class="card" *ngIf="exibirCard; else esconderFormulario">
+      <div class="card-header">
+        <h1>Cadastro divida</h1>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="formularioCadastroDivida">
+          <div class="mb-3">
+            <label for="cartao" class="form-label">Cartão:</label>
+            <select class="form-select" id="cartao" formControlName="cartao">
+                <option disabled>Selecione o cartão</option>
+                <option value="Santander">Santander</option>
+                <option value="Itau">Itau</option>
+                <option value="Bradesco">Bradesco</option>
+              </select>
+          </div>
+          <div class="mb-3">
+            <label for="data" class="form-label">Data:</label>
+            <input class="form-control" type="date" id="data" formControlName="data"/>
+        </div>
+          <div class="mb-3">
+            <label for="valor" class="form-label">Valor:</label>
+            <input type="text" class="form-control" id="valor" formControlName="valor" >
+          </div>
+          <div class="mb-3">
+            <label for="parcela" class="form-label">Parcela:</label>
+            <select class="form-select" id="parcela" formControlName="parcela">
+                <option disabled>Selecione o cartão</option>
+                <option value="1">1x</option>
+                <option value="2">2x</option>
+                <option value="4">4x</option>
+                <option value="5">5x</option>
+                <option value="6">6x</option>
+                <option value="7">7x</option>
+                <option value="8">8x</option>
+                <option value="9">9x</option>
+                <option value="10">10x</option>
+                <option value="11">11x</option>
+                <option value="12">12x</option>
+              </select>
+          </div>
+          <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição:</label>
+            <input type="text" class="form-control" id="descricao" formControlName="descricao">
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <button class="btn btn-secondary" routerLink="/">voltar</button>
+            </div>
+            <div class="col d-flex justify-content-end">
+              <button class="btn btn-primary" (click)="cadastrarDivida()">cadastrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <ng-template #esconderFormulario>
+      <div *ngIf="error$ | async; else loadingSucesso">
+        <erro-generico [mensagemErro]="'Desculpe, erro ao cadastrar divida'"></erro-generico>
+      </div>
+      <ng-template #loadingSucesso>
+        <div *ngIf="dividaCadastroSucesso; else loading">
+          <mensagem-sucesso [mensagemSucesso]="'Divida cadastrada com sucesso!'"></mensagem-sucesso>
+        </div>
+        <ng-template #loading>
+          <spinner class="margin-top50"></spinner>
+        </ng-template>
+      </ng-template>
+    </ng-template>
+  </div>
+  

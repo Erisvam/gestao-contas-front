@@ -6,14 +6,18 @@ import { DetalharCartaoComponent } from './components/cartao/detalhar/detalhar-c
 import { DeletarCartaoComponent } from './components/cartao/deletar/deletar-cartao.component';
 import { CadastroUsuarioComponent } from './components/usuario/cadastrar/cadastro-usuario.component';
 import { DetalheUsuarioComponent } from './components/usuario/detalhar/detalhe-usuario.component';
+import { LoginComponent } from './components/login/login/login.component';
+import { CadastroDividaComponent } from './components/divida/cadastrar/cadastro-divida/cadastro-divida.component';
 
   const routes: Routes = [
-    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: '', component: LoginComponent, pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
     { path: 'cadastro-cartao', component: CadastrarCartaoComponent },
     { path: 'detalhe-cartao/:codigo_cartao', component: DetalharCartaoComponent },
     { path: 'delete-cartao/:codigo_cartao', component: DeletarCartaoComponent },
-    { path: 'detalheUsuario/:id', component: DetalheUsuarioComponent },
-    { path: 'cadastrarUsuario', component: CadastroUsuarioComponent }
+    { path: 'detalhe-usuario/:id', component: DetalheUsuarioComponent },
+    { path: 'cadastro-usuario', component: CadastroUsuarioComponent },
+    { path: 'cadastro-divida', component: CadastroDividaComponent }
 ];
 
 @NgModule({

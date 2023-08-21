@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Usuario } from 'src/app/models/usuario/usuario';
-import { Cartao } from 'src/app/models/cartao/cartao.interface';
 import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { EMPTY, Observable, Subject, catchError } from 'rxjs';
+import {usuarioResponse} from "../../models/usuario/usuario-response.interface";
+import {CartaoResponse} from "../../models/cartao/cartao-response-interface";
 
 @Component({
   selector: 'home',
@@ -11,8 +12,13 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 })
 export class HomeComponent {
 
-  usuarios: Usuario[] = [];
-  Cartao: Cartao[] = [];
+  usuarios!: usuarioResponse;
+
+  cartaoResponse$!: Observable<CartaoResponse>;
+  errorCartoes$ = new Subject<boolean>();
+  errorUsuarios$ = new Subject<boolean>();
+
+  usuarioResponse$!: Observable<usuarioResponse>;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -22,13 +28,34 @@ export class HomeComponent {
     }
 
     listarCartao(): void {
-      this.cartaoService.listarCartao().subscribe(response => this.Cartao = response);
+      this.cartaoResponse$ = this.cartaoService.listarCartao()
+        .pipe(
+          catchError(error => {
+            this.errorCartoes$.next(true);
+            return EMPTY;
+          })
+        );
     }
 
     listarUsuarios(): void {
-      this.usuarioService.listarUsuarios().subscribe(response => {
-        this.usuarios = response;
-        console.log(this.usuarios);
-      });
+      this.usuarioResponse$ = this.usuarioService.listarUsuarios()
+      .pipe(
+        catchError(error => {
+          this.errorUsuarios$.next(true);
+          return EMPTY;
+        })
+      );
     }
+
+    onCarregarCartoes(): void {
+      this.listarCartao();
+      this.errorCartoes$.next(false);
+    }
+
+    onCarregarUsuarios(): void {
+      this.listarUsuarios();
+      this.errorUsuarios$.next(false);
+    }
+
+    ngOnDestroy(){}
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EMPTY, Observable, Subject, catchError } from 'rxjs';
 import { ConsultaCartao } from 'src/app/models/cartao/consulta-cartao.interface';
 import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 
@@ -10,19 +11,34 @@ import { CartaoService } from 'src/app/services/cartao/cartao-service.service';
 })
 export class DetalharCartaoComponent {
 
-  isUsuarios: boolean = false;
+  codigoCartao: string;
 
-  cartao?: ConsultaCartao;
+  cartao$!: Observable<ConsultaCartao>;
+  error$ = new Subject<boolean>();
 
   constructor(
     private activeRouter: ActivatedRoute,
-    private consultarCartaoService: CartaoService
+    private cartaoService: CartaoService
     ){
-    let codigoCartao = this.activeRouter.snapshot.paramMap.get('codigo_cartao');
-    this.consultarCartaoService.consultarCartao(codigoCartao!).subscribe(response => {
-      this.cartao = response;
-      this.isUsuarios = this.cartao?.usuarios.length != 0 ? true : false;
-    });
+      this.codigoCartao = this.activeRouter.snapshot.paramMap.get('codigo_cartao')!;
+      this.consutarCartao();
+    }
+
+    consutarCartao(): void {
+    this.cartao$ = this.cartaoService.consultarCartao(this.codigoCartao)
+      .pipe(
+        catchError(error => {
+          this.error$?.next(true);
+          return EMPTY;
+        })
+      );
   }
+
+  onCarregarNovamente(): void {
+    this.consutarCartao();
+    this.error$.next(true);
+  }
+
+  ngOnDestroy(){}
 
 }

@@ -1,27 +1,42 @@
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">Cadastro cartão</span>
+<div class="card" *ngIf="exibirCard; else esconderFormulario">
+  <div class="card-header">
+    <h1>Cadastro cartão</h1>
   </div>
-</nav>
-<form class="container" [formGroup]="formularioCadastroCartao">
-  <div class="mb-3">
-    <label class="form-label">Código cartão</label>
-    <input type="text" class="form-control" formControlName="codigoCartao" id="codigoCartao">
+  <div class="card-body">
+    <form [formGroup]="formularioCadastroCartao">
+      <div class="mb-3">
+        <label for="codigoCartao" class="form-label">Código cartão:</label>
+        <input type="text" class="form-control" id="codigoCartao" formControlName="codigoCartao" maxlength="4">
+      </div>
+      <div class="mb-3">
+        <label for="nomeCartao" class="form-label">Nome do cartão:</label>
+        <input type="text" class="form-control" id="nomeCartao" formControlName="nomeCartao">
+      </div>
+      <div class="mb-3">
+        <label for="dataFechamento" class="form-label">Data fechamento:</label>
+        <input type="text" class="form-control" id="dataFechamento" formControlName="dataFechamento">
+      </div>
+      <div class="row mt-4">
+        <div class="col">
+          <button class="btn btn-secondary" routerLink="/home">voltar</button>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <button class="btn btn-primary" (click)="cadastrarCartao()">cadastrar</button>
+        </div>
+      </div>
+    </form>
   </div>
-  <div class="mb-3">
-    <label class="form-label">Nome do cartão</label>
-    <input type="text" class="form-control" formControlName="nomeCartao" id="nomeCartao">
+</div>
+<ng-template #esconderFormulario>
+  <div *ngIf="error$ | async; else loadingSucesso">
+    <erro-generico [mensagemErro]="'Desculpe, erro ao cadastrar cartão'"></erro-generico>
   </div>
-  <div class="mb-3">
-    <label class="form-label">Data fechamento</label>
-    <input type="text" class="form-control" formControlName="dataFechamento" id="dataFechamento">
-  </div>
-  <div class="row">
-    <div class="col">
-      <button class="btn btn-secondary" routerLink="/">voltar</button>
+  <ng-template #loadingSucesso>
+    <div *ngIf="cartaoCadastradoSucesso; else loading">
+      <mensagem-sucesso [mensagemSucesso]="'Cartão cadastrado com sucesso!'"></mensagem-sucesso>
     </div>
-    <div class="col d-flex justify-content-end">
-      <button class="btn btn-primary" (click)="cadastrarCartao()">cadastrar</button>
-    </div>
-  </div>
-</form>
+    <ng-template #loading>
+      <spinner></spinner>
+    </ng-template>
+  </ng-template>
+</ng-template>

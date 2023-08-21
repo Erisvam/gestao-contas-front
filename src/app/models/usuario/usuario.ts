@@ -1,5 +1,5 @@
 export interface Usuario {
-    codigo:number
+    id:number
     nome: string
-    valor: number
+    valor_total: number
 }

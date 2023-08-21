@@ -1,16 +1,7 @@
-import { Divida } from "../divida/divida"
-import { Pagination } from "../pagination"
+import { DividaUsuario } from "./divida-usuario.interface";
 
 export interface UsuarioDetalhe {
-    nome: string
-    Cartao: [
-        {
-            id: number,
-            nome_cartao: string,
-            valor_total: number,
-            dividas: Divida[],
-            pagination: Pagination
-        }
-    ],
-    saldo_devedor: number
+  nome_usuario: string,
+  saldo_devedor: number,
+  dividas_usuario: DividaUsuario[]
 }

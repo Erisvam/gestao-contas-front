@@ -1,6 +1,6 @@
 import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,11 @@ import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { AlertaComponent } from './components/generico/alerta/alerta.component';
 import { DetalheUsuarioComponent } from './components/usuario/detalhar/detalhe-usuario.component';
+import { SpinnerComponent } from './components/generico/spinner/spinner.component';
+import { ErroGenericoComponent } from './components/generico/erro-generico/erro-generico.component';
+import { MensagemSucessoComponent } from './components/generico/mensagem-sucesso/mensagem-sucesso.component';
+import { LoginComponent } from './components/login/login/login.component';
+import { CadastroDividaComponent } from './components/divida/cadastrar/cadastro-divida/cadastro-divida.component';
 
 registerLocaleData(ptBr);
 
@@ -27,7 +32,12 @@ registerLocaleData(ptBr);
     DetalheUsuarioComponent,
     CadastrarCartaoComponent,
     DetalharCartaoComponent,
-    DeletarCartaoComponent
+    DeletarCartaoComponent,
+    SpinnerComponent,
+    ErroGenericoComponent,
+    MensagemSucessoComponent,
+    LoginComponent,
+    CadastroDividaComponent
   ],
   imports: [
     BrowserModule,

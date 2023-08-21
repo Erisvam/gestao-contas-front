@@ -1,26 +1,40 @@
-<!-- <div class="page-content">
-    <h1 class="page-title fs-5 margem-baixo20">Cadastrar Usuário</h1>
-    <form>
-      <div class="mb-3">
-        <label for="nome_usuario" class="col-form-label">Nome do Usuário:</label>
-        <input type="text" class="form-control" id="nome_usuario" [(ngModel)]="usuario.nome" name="nome">
-        <div *ngIf="campoNome" class="alert alert-danger">
-          <strong>Nome</strong> é um campo obrigatório!
+<div style="height: 100vh;">
+  <div class="card" *ngIf="exibirCard; else esconderFormulario">
+    <div class="card-header">
+      <h1>Cadastro cadastro</h1>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="formularioCadastroUsuario">
+        <div class="mb-3">
+          <label for="nomeUsuario" class="form-label">Nome:</label>
+          <input type="text" class="form-control" id="nomeUsuario" formControlName="nomeUsuario">
         </div>
-      </div>
-      <div class="mb-3">
-        <label for="telefone" class="col-form-label">Telefone:</label>
-        <input mask="(99) 00000-0000" type="tel" class="form-control" id="telefone" [(ngModel)]="usuario.telefone" name="telefone">
-        <div *ngIf="campoTelefone" class="alert alert-danger">
-          <strong>Telefone</strong> é um campo obrigatório!
+        <div class="mb-3">
+          <label for="telefone" class="form-label">Telefone:</label>
+          <input type="text" class="form-control" id="telefone" formControlName="telefoneUsuario">
         </div>
+        <div class="row mt-4">
+          <div class="col">
+            <button class="btn btn-secondary" routerLink="/home">voltar</button>
+          </div>
+          <div class="col d-flex justify-content-end">
+            <button class="btn btn-primary" (click)="cadastrarUsuario()">cadastrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <ng-template #esconderFormulario>
+    <div *ngIf="error$ | async; else loadingSucesso">
+      <erro-generico [mensagemErro]="'Desculpe, erro ao cadastrar usuário'"></erro-generico>
+    </div>
+    <ng-template #loadingSucesso>
+      <div *ngIf="usuarioCadastroSucesso; else loading">
+        <mensagem-sucesso [mensagemSucesso]="'Usuário cadastrado com sucesso!'"></mensagem-sucesso>
       </div>
-      <app-alerta *ngIf="mensagemErro" [tipo]="'erro'" [titulo]="'Cadastro não efetuado'" [mensagem]="'favor tentar novamente mais tarde'"></app-alerta>
-      <app-alerta *ngIf="mensagemSucesso" [tipo]="'sucesso'" [titulo]="'Cadastro efetuado com sucesso!'"></app-alerta>
-      <div class="button-section">
-        <button type="submit" class="btn btn-secondary" routerLink="" >cancelar</button>
-        <button type="submit" class="btn btn-primary" id="btnCadastrarUsuario" (click)="salvarUsuario()">salvar</button>
-      </div>
-    </form>
+      <ng-template #loading>
+        <spinner class="margin-top50"></spinner>
+      </ng-template>
+    </ng-template>
+  </ng-template>
 </div>
-   -->

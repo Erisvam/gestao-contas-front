@@ -1,35 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { RotaApi } from 'src/app/models/commons/rota-api.model';
 import { UsuarioCadastro } from 'src/app/models/usuario/usuario-cadastro';
+import { UsuarioDetalhe } from 'src/app/models/usuario/usuario-detalhe';
+import {usuarioResponse} from "../../models/usuario/usuario-response.interface";
+import { GestaoContasUtilService } from '../utils/gestao-contas-util.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  readonly uriBase: string = 'http://localhost:8080';
-
-  path = {
-    "listarUsuarios": "/usuarios",
-    "cadastrarUsuario": "/usuarios",
-    "detalharUsuario": "/usuarios/:id"
-  }
+  rotaApi: RotaApi = new RotaApi();
 
   constructor(private httpClient: HttpClient){}
 
-  listarUsuarios(): Observable<any[]>{
-    let rotaListaUsuarios = this.uriBase.concat(this.path.listarUsuarios);
-    return this.httpClient.get<any>(rotaListaUsuarios);
+  listarUsuarios(): Observable<usuarioResponse>{
+    return this.httpClient.get<usuarioResponse>(this.rotaApi.getRotaUsuarios(), {headers: GestaoContasUtilService.getHttpHeaders()});
   }
 
   cadastrarUsuario(usuarioRequest: UsuarioCadastro): Observable<any> {
-    let rotaCadastrarUsuario = this.uriBase.concat(this.path.cadastrarUsuario);
-    return this.httpClient.post<any>(rotaCadastrarUsuario, usuarioRequest);
+    return this.httpClient.post<any>(this.rotaApi.getRotaUsuarios(), usuarioRequest, {headers: GestaoContasUtilService.getHttpHeaders()});
   }
 
-  detalharUsuario(id: string): Observable<any> {
-    let rotaDetalheUsuario = this.uriBase.concat(this.path.detalharUsuario.replace(":id", id));
-    return this.httpClient.get<any>(rotaDetalheUsuario);
+  detalharUsuario(id: string): Observable<UsuarioDetalhe> {
+    return this.httpClient.get<UsuarioDetalhe>(this.rotaApi.getRotaUsuarios(id), {headers: GestaoContasUtilService.getHttpHeaders()});
   }
 }

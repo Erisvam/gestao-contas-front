@@ -1,6 +1,8 @@
 export interface Divida {
-    data_compra: string,
-    descricao: string,
+    codigo_cartao: string,
+    nome_banco: string,
     valor_compra: number,
-    parcelas: string
+    data_compra: string,
+    descricao_compra: string,
+    parcela:number
 }

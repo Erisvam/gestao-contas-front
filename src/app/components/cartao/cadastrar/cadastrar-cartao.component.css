@@ -1,6 +1,5 @@
-.has-error .error {
-  color: red;
-}
-.has-error input {
-  border: 1px solid red;
+.card {
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
 }
